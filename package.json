@@ -1,0 +1,71 @@
+{
+  "name": "angular-unit-test-helper",
+  "version": "1.0.0",
+  "description": "Helper functions to help write unit tests in Angular using mocks and spies",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo 'I need tests'",
+    "test:karma": "karma start",
+    "dev": "webpack-dev-server --inline --hot",
+    "build:webpack": "webpack -p",
+    "standardize": "import-sort --write \"**/*.ts\" && prettier --write \"**/*.ts\"",
+    "build": "npm run standardize && tsc",
+    "prepublishOnly": "npm run test",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duluca/angular-unit-test-helper.git"
+  },
+  "keywords": [
+    "angular",
+    "unit",
+    "test",
+    "jasmine",
+    "mock",
+    "spy"
+  ],
+  "author": "Doguhan Uluca",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/duluca/angular-unit-test-helper/issues"
+  },
+  "homepage": "https://github.com/duluca/angular-unit-test-helper#readme",
+  "devDependencies": {
+    "@types/jasmine": "^3.3.12",
+    "dev-norms": "^1.7.0",
+    "import-sort": "^6.0.0",
+    "import-sort-cli": "^6.0.0",
+    "import-sort-parser-typescript": "^6.0.0",
+    "import-sort-style-module": "^6.0.0",
+    "jasmine-core": "^3.4.0",
+    "karma": "^4.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-webpack": "^3.0.5",
+    "prettier": "^1.16.4",
+    "rxjs": "^6.4.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.4.3",
+    "webpack": "^4.30.0",
+    "webpack-dev-server": "^3.3.1"
+  },
+  "peerDependencies": {
+    "rxjs": "^6.4.0"
+  },
+  "importSort": {
+    ".ts, .tsx": {
+      "parser": "typescript",
+      "style": "module",
+      "options": {}
+    }
+  },
+  "prettier": {
+    "printWidth": 90,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "parser": "typescript"
+  }
+}

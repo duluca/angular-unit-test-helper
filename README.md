@@ -40,7 +40,16 @@ Usage
 
 ### createComponentMock(className: string, selectorName?: string)
 
-Creates a mock class decorated with @Component, if not specified selector is inferred to be MyClassComponent -> app
+Creates a mock class decorated with @Component, if not specified selector is inferred to be MyClassComponent -> app.
+
+Replaces boilerplate
+```
+@Component({
+  selector: 'app-current-weather',
+  template: '',
+})
+class MockCurrentWeatherComponent {}
+```
 
 Usage
 ```

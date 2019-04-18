@@ -38,7 +38,7 @@ Usage
   weatherServiceMock.currentWeather$.next(fakeWeather)
 ```
 
-### createComponentMock(className: string, selectorName?: string)
+### createComponentMock(className: string, selectorName?: string, template = '')
 
 Creates a mock class decorated with @Component, if not specified selector is inferred to be MyClassComponent -> app.
 
@@ -50,6 +50,8 @@ Replaces boilerplate
 })
 class MockCurrentWeatherComponent {}
 ```
+
+Option to override empty template.
 
 Usage
 ```

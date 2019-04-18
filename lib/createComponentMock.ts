@@ -1,8 +1,8 @@
-import { Component } from '@angular/core'
-import camelToKebabCase from 'camel-to-kebab'
-import { __decorate } from 'tslib'
+import { Component } from '@angular/core';
+import camelToKebabCase from 'camel-to-kebab';
+import { __decorate } from 'tslib';
 
-export function createComponentMock(className: string, selectorName?: string) {
+export function createComponentMock(className: string, selectorName?: string, template = '') {
   if (!className || !className.endsWith('Component')) {
     throw 'Expected class name to end with Component, but it did not. Provide a valid component class name.'
   }
@@ -13,7 +13,7 @@ export function createComponentMock(className: string, selectorName?: string) {
 
   const newClass: any = ((window as any)[className] = () => {})
   return __decorate(
-    [Component({ selector: 'app-current-weather', template: '' })],
+    [Component({ selector: selectorName, template: template })],
     newClass
   )
 }

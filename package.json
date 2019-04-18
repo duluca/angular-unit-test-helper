@@ -33,7 +33,9 @@
   },
   "homepage": "https://github.com/duluca/angular-unit-test-helper#readme",
   "devDependencies": {
+    "@angular/core": "^7.2.13",
     "@types/jasmine": "^3.3.12",
+    "camel-to-kebab": "^1.1.0",
     "dev-norms": "^1.7.0",
     "import-sort": "^6.0.0",
     "import-sort-cli": "^6.0.0",
@@ -52,7 +54,8 @@
     "webpack-dev-server": "^3.3.1"
   },
   "peerDependencies": {
-    "rxjs": "^6.4.0"
+    "rxjs": "^6.4.0",
+    "@angular/core": "^7.2.13"
   },
   "importSort": {
     ".ts, .tsx": {

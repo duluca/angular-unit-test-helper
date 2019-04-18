@@ -35,7 +35,6 @@
   "devDependencies": {
     "@angular/core": "^7.2.13",
     "@types/jasmine": "^3.3.12",
-    "camel-to-kebab": "^1.1.0",
     "dev-norms": "^1.7.0",
     "import-sort": "^6.0.0",
     "import-sort-cli": "^6.0.0",
@@ -55,7 +54,8 @@
   },
   "peerDependencies": {
     "rxjs": ">= 5 <= 100",
-    "@angular/core": ">= 4 <=100"
+    "@angular/core": ">= 4 <=100",
+    "typescript": ">= 2 <= 100"
   },
   "importSort": {
     ".ts, .tsx": {
@@ -70,5 +70,8 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "parser": "typescript"
+  },
+  "dependencies": {
+    "camel-to-kebab": "^1.1.0"
   }
 }

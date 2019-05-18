@@ -11,6 +11,7 @@ export enum ObservablePropertyStrategy {
 
 export function autoSpyObj(
   classUnderTest: Function,
+  spyProperties: string[] = [],
   observableStrategy = ObservablePropertyStrategy.Observable
 ) {
   const props = Reflect.ownKeys(classUnderTest.prototype)
@@ -19,7 +20,9 @@ export function autoSpyObj(
     getAllFunctions(classUnderTest.prototype, props)
   )
 
-  const properties = getAllProperties(classUnderTest.prototype, props)
+  const properties = getAllProperties(classUnderTest.prototype, props).concat(
+    spyProperties
+  )
 
   properties.map(name => {
     let defaultValue = {}

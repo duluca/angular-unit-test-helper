@@ -23,10 +23,11 @@ Check out my sample projects:
 
 ## Features
 
-### autoSpyObj(classUnderTest: Function, observableStrategy = ObservablePropertyStrategy.Observable
-)
+### function autoSpyObj(classUnderTest: Function, spyProperties: string[] = [], observableStrategy = ObservablePropertyStrategy.Observable)
 
 An extension of `jasmine.createSpyObj` with automatic discovery of functions and property getters given a Class, without requiring an instance of an object.
+
+If you'd want to spy on a property without a getter, then you can simply pass in the property name like `autoSpyObj(WeatherService, ['currentWeather$'])`.
 
 Return value of `autoSpyObj` will be a true mock of the Class with spy-able methods and properties, making it easy to control and modify the return values of external dependencies during testing.
 
@@ -35,6 +36,15 @@ If property name ends with `$` indicating that the property is an Observable, th
 Usage
 ```
     const weatherServiceSpy = autoSpyObj(WeatherService)
+```
+
+Alternate Usage
+```
+     const weatherServiceSpy = autoSpyObj(
+      WeatherService,
+      ['currentWeather$'],
+      ObservablePropertyStrategy.BehaviorSubject
+    )
 ```
 
 `autoSpyObj` replaces the more verbose and difficult to maintain code, shown below:

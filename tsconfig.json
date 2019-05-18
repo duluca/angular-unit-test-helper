@@ -15,6 +15,10 @@
       "dom",
       "es2018"
     ],
+    "types": [
+      "jasmine",
+      "node"
+    ],
     "declaration": true,
     "outDir": "./dist",
     "sourceMap": true,
@@ -36,7 +40,8 @@
     /* Report error when not all code paths in function return a value. */
     "noFallthroughCasesInSwitch": true,
     /* Report errors for fallthrough cases in switch statement. */
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "./lib"

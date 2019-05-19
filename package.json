@@ -11,7 +11,7 @@
     "build:webpack": "webpack -p",
     "standardize": "import-sort --write \"**/*.ts\" && prettier --write \"**/*.ts\"",
     "build": "npm run standardize && tsc",
-    "prepare": "npm run build",
+    "pretest": "npm run build",
     "preversion": "npm test",
     "postversion": "npm publish",
     "postpublish": "git push origin --all; git push origin --tags"

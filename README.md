@@ -7,7 +7,7 @@ Minimal feature set to bridge obvious gaps in jasmine's support of modern JavaSc
 Here's a great article about auto-mocking libraries: https://hackernoon.com/with-typescript-3-and-substitute-js-you-are-already-missing-out-when-mocking-or-faking-a3b3240c4607.
 
 ## Install 
-Add the package to your project with npm: 
+Add the package to your Angular project with npm: 
 ```
 npm i -D angular-unit-test-helper
 ```

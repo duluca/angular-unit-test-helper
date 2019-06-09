@@ -6,14 +6,11 @@ Minimal feature set to bridge obvious gaps in jasmine's support of modern JavaSc
 
 Here's a great article about auto-mocking libraries: https://hackernoon.com/with-typescript-3-and-substitute-js-you-are-already-missing-out-when-mocking-or-faking-a3b3240c4607.
 
-## Contributing
-
-- Send PR, will accept
-- To setup the project, run `npm install`
-- Test against the example project listed below using `npm link`
-- To publish the project, run `npm version major|minor|patch`
-> Read more about that setup by Isaac Schlueter [here](https://blog.npmjs.org/post/184553141742/easy-automatic-npm-publishes)
-
+## Install 
+Add the package to your project with npm: 
+```
+npm i -D angular-unit-test-helper
+```
 
 ## Example Projects
 
@@ -110,3 +107,11 @@ Helper function that return all functions in a given Class using reflection, so 
 ### getAllProperties(prototype: any, props?: (string | number | symbol)[])
 
 Helper function that return all property getters in a given Class using reflection, so you don't have to provide an instance of the object.
+
+## Contributing
+
+- Send PR, will accept
+- To setup the project, run `npm install`
+- Test against the example project listed below using `npm link`
+- To publish the project, run `npm version major|minor|patch`
+> Read more about that setup by Isaac Schlueter [here](https://blog.npmjs.org/post/184553141742/easy-automatic-npm-publishes)

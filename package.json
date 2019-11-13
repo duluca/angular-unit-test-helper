@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duluca/angular-unit-test-helper.git"
+    "url": "https://github.com/duluca/angular-unit-test-helper.git"
   },
   "keywords": [
     "angular",

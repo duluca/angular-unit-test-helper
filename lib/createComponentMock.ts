@@ -8,7 +8,9 @@ export function createComponentMock(
   template = ''
 ) {
   if (!className || !className.endsWith('Component')) {
-    throw new Error('Expected class name to end with Component, but it did not. Provide a valid component class name.')
+    throw new Error(
+      'Expected class name to end with Component, but it did not. Provide a valid component class name.'
+    )
   }
 
   if (!selectorName) {

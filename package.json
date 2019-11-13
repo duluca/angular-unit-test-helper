@@ -9,8 +9,9 @@
     "test:karma": "karma start",
     "dev": "webpack-dev-server --inline --hot",
     "build:webpack": "webpack -p",
-    "standardize": "import-sort --write \"**/*.ts\" && prettier --write \"**/*.ts\"",
-    "build": "npm run standardize && tsc",
+    "standardize": "import-sort --write \"{lib,tests}/**/*.ts\" && prettier-tslint fix \"{lib,tests}/**/*.ts\"",
+    "standardize:ci": "import-sort -l \"{lib,tests}/**/*.ts\" && prettier-tslint check \"{lib,tests}/**/*.ts\"",
+    "build": "tsc",
     "pretest": "npm run build",
     "preversion": "npm test",
     "postversion": "npm publish",
@@ -48,10 +49,14 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^2.0.1",
     "karma-webpack": "^3.0.5",
+    "nyc": "^14.1.1",
     "prettier": "^1.16.4",
+    "prettier-tslint": "^0.4.2",
     "rxjs": "^6.4.0",
+    "source-map-support": "^0.5.16",
     "ts-loader": "^5.3.3",
-    "ts-node": "^8.1.0",
+    "ts-node": "^8.5.0",
+    "tslint": "^5.20.1",
     "typescript": "^3.4.3",
     "webpack": "^4.30.0",
     "webpack-dev-server": "^3.3.1"
@@ -68,13 +73,6 @@
       "style": "module",
       "options": {}
     }
-  },
-  "prettier": {
-    "printWidth": 90,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "parser": "typescript"
   },
   "dependencies": {
     "camel-to-kebab": "^1.1.0"

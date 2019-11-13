@@ -4,7 +4,7 @@ import { __decorate } from 'tslib';
 export function createComponentMock(className, selectorName, template) {
     if (template === void 0) { template = ''; }
     if (!className || !className.endsWith('Component')) {
-        throw 'Expected class name to end with Component, but it did not. Provide a valid component class name.';
+        throw new Error('Expected class name to end with Component, but it did not. Provide a valid component class name.');
     }
     if (!selectorName) {
         selectorName = inferSelectorName(className);

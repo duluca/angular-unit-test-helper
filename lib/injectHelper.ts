@@ -15,22 +15,3 @@ export function injectMany<TDependency>(
     injectOne(dependency, mockedDependency)
   })
 }
-
-
-
-
-class Foo {
-
-}
-
-let fooMock: jasmine.SpyObj<Foo>
-
-fooMock = jasmine.createSpyObj('blah', [])
-
-class Bar {
-}
-let barMock: jasmine.SpyObj<Foo>
-
-barMock = jasmine.createSpyObj('blah', [])
-
-injectMany([[Foo, fooMock], [Bar, barMock]])

@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
-import camelToKebabCase from 'camel-to-kebab';
-import { __decorate } from 'tslib';
-export function createComponentMock(className, selectorName, template) {
-    if (template === void 0) { template = ''; }
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const core_1 = require("@angular/core");
+const camel_to_kebab_1 = tslib_1.__importDefault(require("camel-to-kebab"));
+const tslib_2 = require("tslib");
+function createComponentMock(className, selectorName, template = '') {
     if (!className || !className.endsWith('Component')) {
         throw new Error('Expected class name to end with Component, but it did not. Provide a valid component class name.');
     }
     if (!selectorName) {
         selectorName = inferSelectorName(className);
     }
-    var newClass = (window[className] = function () { });
-    return __decorate([Component({ selector: selectorName, template: template })], newClass);
+    const newClass = (window[className] = () => { });
+    return tslib_2.__decorate([core_1.Component({ selector: selectorName, template })], newClass);
 }
+exports.createComponentMock = createComponentMock;
 function inferSelectorName(className) {
     className = className.replace('Component', '');
-    className = camelToKebabCase(className);
-    return "app-" + className;
+    className = camel_to_kebab_1.default(className);
+    return `app-${className}`;
 }
 //# sourceMappingURL=createComponentMock.js.map

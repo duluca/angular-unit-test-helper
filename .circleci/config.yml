@@ -28,22 +28,23 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # ensure code formatting standards are adhered to - run 'npm run standardize' to fix
-      - run: npm run standardize:ci
+      - run: npm run style
+      - run: npm run lint
 
       - run: npm test
 
-      # - store_test_results:
-      #     path: ./test_results
+      - store_test_results:
+          path: ./test_results
 
-      # # run code coverage and store coverage report
-      # - run: npm run test:nyc
-      # - store_artifacts:
-      #     path: ./coverage
+      # run code coverage and store coverage report
+      - run: npm run test:nyc
+      - store_artifacts:
+          path: ./coverage
 
-      # # upload coverage report to coveralls for readme badge support
-      # # requires config.yml version 2.1 and orbs: coveralls: coveralls/coveralls@1.0.4
-      # # requires coveralls account and token specific to repo to be stored in CircleCI
-      # - coveralls/upload
+      # upload coverage report to coveralls for readme badge support
+      # requires config.yml version 2.1 and orbs: coveralls: coveralls/coveralls@1.0.4
+      # requires coveralls account and token specific to repo to be stored in CircleCI
+      - coveralls/upload
 
       - run: npm run
 

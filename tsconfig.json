@@ -4,25 +4,13 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "importHelpers": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
     "target": "es2015",
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
-    "lib": [
-      "dom",
-      "es2018",
-      "es2015",
-      "es2016",
-      "es2017",
-      "es2019"
-    ],
-    "types": [
-      "jasmine",
-      "node"
-    ],
+    "lib": ["dom", "es2018", "es2015", "es2016", "es2017", "es2019"],
+    "types": ["jasmine", "node"],
     "declaration": true,
     "outDir": "./dist",
     "sourceMap": true,
@@ -38,7 +26,5 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true
   },
-  "include": [
-    "./lib"
-  ]
+  "include": ["./src"]
 }

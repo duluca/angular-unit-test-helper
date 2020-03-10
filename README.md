@@ -14,7 +14,7 @@ Here's a great article about auto-mocking libraries: https://hackernoon.com/with
 
 Add the package to your Angular project with npm:
 
-```
+```bash
 npm i -D angular-unit-test-helper
 ```
 
@@ -27,7 +27,7 @@ Check out my sample projects:
 
 ## Features
 
-### function autoSpyObj(classUnderTest: Function, spyProperties: string[] = [], observableStrategy = ObservablePropertyStrategy.Observable)
+### `autoSpyObj(classUnderTest: Function, spyProperties: string[] = [], observableStrategy = ObservablePropertyStrategy.Observable)`
 
 An extension of `jasmine.createSpyObj` with automatic discovery of functions and property getters given a Class, without requiring an instance of an object.
 
@@ -39,13 +39,13 @@ If property name ends with `$` indicating that the property is an Observable, th
 
 Usage
 
-```
+```ts
     const weatherServiceSpy = autoSpyObj(WeatherService)
 ```
 
 Alternate Usage
 
-```
+```ts
      const weatherServiceSpy = autoSpyObj(
       WeatherService,
       ['currentWeather$'],
@@ -55,46 +55,57 @@ Alternate Usage
 
 `autoSpyObj` replaces the more verbose and difficult to maintain code, shown below:
 
-```
+```ts
     jasmine.createSpyObj(WeatherService.name, [
       'getCurrentWeather', 'getCurrentWeatherByCoords', 'updateCurrentWeather'
     ])
     addPropertyAsBehaviorSubject(weatherServiceSpy, 'currentWeather$')
 ```
 
-### addProperty(object: object, propertyName: string, valueToReturn: object)
+### `addProperty(object: object, propertyName: string, valueToReturn: object)`
 
 When creating a mock object, add a property to that object with a property getter, so you can use a jasmine.spyOnProperty.
 
 Usage
 
-```
+```ts
   weatherServiceMock = jasmine.createSpyObj('WeatherService', ['getCurrentWeather'])
   addPropertyAsBehaviorSubject(weatherServiceMock, 'currentWeather', null)
   ...
   spyOnProperty(weatherServiceMock, 'currentWeather$').and.returnValue({ temp = 72})
 ```
 
-### addPropertyAsBehaviorSubject(object: object, propertyName: string)
+### `addPropertyAsBehaviorSubject(object: object, propertyName: string)`
 
 Convenience method to configure a property as a BehaviorSubject, so you can update its value before each test by calling .next on it.
 
 Usage
 
-```
+```ts
   weatherServiceMock = jasmine.createSpyObj('WeatherService', ['getCurrentWeather'])
   addPropertyAsBehaviorSubject(weatherServiceMock, 'currentWeather$')
   ...
   weatherServiceMock.currentWeather$.next(fakeWeather)
 ```
 
-### createComponentMock(className: string, selectorName?: string, template = '')
+### `createComponentMock(className: string, selectorName?: string, template = '')`
 
-Creates a mock class decorated with @Component, if not specified selector is inferred to be MyClassComponent -> app.
+Creates a mock class decorated with @Component, if not specified selector is inferred to be MyClassComponent -> app. Provides an option to override empty template.
+
+Usage
+
+```ts
+TestBed.configureTestingModule({
+      declarations: [ ..., createComponentMock('CurrentWeatherComponent')]
+      ...
+})
+```
+
+Note: Inferred selector in the above example is 'app-current-weather'.
 
 Replaces boilerplate
 
-```
+```ts
 @Component({
   selector: 'app-current-weather',
   template: '',
@@ -102,24 +113,54 @@ Replaces boilerplate
 class MockCurrentWeatherComponent {}
 ```
 
-Option to override empty template.
+### `injectOne<TDependency>(dependency: Type<TDependency>, _spyObject: jasmine.SpyObj<TDependency>)`
+
+Helper function to inject a dependency, like a service, into the TestBed and assign it to the mocked SpyObj.
 
 Usage
 
-```
-TestBed.configureTestingModule({
-      declarations: [ ..., createComponentMock('CurrentWeatherComponent')]
-      ...
+```ts
+beforeEach(() => {
+  injectOne(WeatherService, weatherServiceMock)
 })
 ```
 
-Inferred selector in the above example is 'app-current-weather'.
+Replaces
 
-### getAllFunctions(prototype: any, props?: (string | number | symbol)[])
+```ts
+beforeEach(() => {
+  weatherServiceMock = TestBed.inject(WeatherService) as any
+})
+```
+
+### `injectMany<TDependency>(mockedDependencies: [Type<TDependency>, jasmine.SpyObj<TDependency>][])`
+
+Helper function to inject multiple dependencies, like services, into the TestBed and assign it to the mocked SpyObj.
+
+Usage
+
+```ts
+beforeEach(() => {
+  injectMany([
+    [WeatherService, weatherServiceMock],
+    [PostalCodeService, postalCodeServiceMock]
+  ])
+})
+```
+
+Replaces
+```ts
+beforeEach(() => {
+  weatherServiceMock = TestBed.inject(WeatherService) as any
+  postalCodeServiceMock = TestBed.inject(PostalCodeService) as any
+})
+```
+
+### `getAllFunctions(prototype: any, props?: (string | number | symbol)[])`
 
 Helper function that return all functions in a given Class using reflection, so you don't have to provide an instance of the object.
 
-### getAllProperties(prototype: any, props?: (string | number | symbol)[])
+### `getAllProperties(prototype: any, props?: (string | number | symbol)[])`
 
 Helper function that return all property getters in a given Class using reflection, so you don't have to provide an instance of the object.
 

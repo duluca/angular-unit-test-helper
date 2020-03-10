@@ -10,7 +10,7 @@ export enum ObservablePropertyStrategy {
 }
 
 export function autoSpyObj(
-  classUnderTest: Function,
+  classUnderTest: () => void,
   spyProperties: string[] = [],
   observableStrategy = ObservablePropertyStrategy.Observable
 ) {

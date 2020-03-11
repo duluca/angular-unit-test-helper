@@ -40,26 +40,28 @@ If property name ends with `$` indicating that the property is an Observable, th
 Usage
 
 ```ts
-    const weatherServiceSpy = autoSpyObj(WeatherService)
+const weatherServiceSpy = autoSpyObj(WeatherService)
 ```
 
 Alternate Usage
 
 ```ts
-     const weatherServiceSpy = autoSpyObj(
-      WeatherService,
-      ['currentWeather$'],
-      ObservablePropertyStrategy.BehaviorSubject
-    )
+const weatherServiceSpy = autoSpyObj(
+  WeatherService,
+  ['currentWeather$'],
+  ObservablePropertyStrategy.BehaviorSubject
+)
 ```
 
 `autoSpyObj` replaces the more verbose and difficult to maintain code, shown below:
 
 ```ts
-    jasmine.createSpyObj(WeatherService.name, [
-      'getCurrentWeather', 'getCurrentWeatherByCoords', 'updateCurrentWeather'
-    ])
-    addPropertyAsBehaviorSubject(weatherServiceSpy, 'currentWeather$')
+jasmine.createSpyObj(WeatherService.name, [
+  'getCurrentWeather',
+  'getCurrentWeatherByCoords',
+  'updateCurrentWeather',
+])
+addPropertyAsBehaviorSubject(weatherServiceSpy, 'currentWeather$')
 ```
 
 ### `addProperty(object: object, propertyName: string, valueToReturn: object)`
@@ -113,15 +115,15 @@ Replaces boilerplate
 class MockCurrentWeatherComponent {}
 ```
 
-### `injectOne<TDependency>(dependency: Type<TDependency>, _spyObject: jasmine.SpyObj<TDependency>)`
+### `injectOne<TDependency, TReturn>(dependency: Type<TDependency>): TReturn`
 
-Helper function to inject a dependency, like a service, into the TestBed and assign it to the mocked SpyObj.
+Helper function to inject a dependency, like a service, into the TestBed with a typed return variable.
 
 Usage
 
 ```ts
 beforeEach(() => {
-  injectOne(WeatherService, weatherServiceMock)
+  weatherServiceMock = injectOne(WeatherService)
 })
 ```
 
@@ -133,26 +135,23 @@ beforeEach(() => {
 })
 ```
 
-### `injectMany<TDependency>(mockedDependencies: [Type<TDependency>, jasmine.SpyObj<TDependency>][])`
+### `injectSpy<TDependency>(dependency: Type<TDependency>): jasmine.SpyObj<TDependency>`
 
-Helper function to inject multiple dependencies, like services, into the TestBed and assign it to the mocked SpyObj.
+Helper function to inject a dependency, like services, into the TestBed and assign it to the mocked SpyObj.
 
 Usage
 
 ```ts
 beforeEach(() => {
-  injectMany([
-    [WeatherService, weatherServiceMock],
-    [PostalCodeService, postalCodeServiceMock]
-  ])
+  weatherServiceMock = injectSpy(WeatherService)
 })
 ```
 
 Replaces
+
 ```ts
 beforeEach(() => {
   weatherServiceMock = TestBed.inject(WeatherService) as any
-  postalCodeServiceMock = TestBed.inject(PostalCodeService) as any
 })
 ```
 

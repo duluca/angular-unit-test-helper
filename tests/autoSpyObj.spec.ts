@@ -13,12 +13,6 @@ describe('autoSpyObj', () => {
 
     weatherServiceMock = weatherServiceSpy
 
-    // TestBed.configureTestingModule({
-    //   providers: [{ provide: WeatherService, useValue: weatherServiceSpy }],
-    // }).compileComponents()
-
-    // injectOne(WeatherService, weatherServiceMock)
-
     weatherServiceMock.currentWeather$.next(fakeWeather)
 
     weatherServiceMock.currentWeather$.subscribe(current => {

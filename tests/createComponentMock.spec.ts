@@ -1,4 +1,4 @@
-import { createComponentMock } from '../src'
+import { createComponentMock } from '../src/index'
 
 const window = {} as any
 

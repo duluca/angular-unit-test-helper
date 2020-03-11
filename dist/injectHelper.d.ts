@@ -1,4 +1,4 @@
 /// <reference types="jasmine" />
 import { Type } from '@angular/core';
-export declare function injectOne<TDependency>(dependency: Type<TDependency>, _spyObject: jasmine.SpyObj<TDependency>): void;
-export declare function injectMany<TDependency>(mockedDependencies: [Type<TDependency>, jasmine.SpyObj<TDependency>][]): void;
+export declare function injectOne<TDependency, TReturn>(dependency: Type<TDependency>, testBed?: import("@angular/core/testing").TestBedStatic): TReturn;
+export declare function injectSpy<TDependency>(dependency: Type<TDependency>, testBed?: import("@angular/core/testing").TestBedStatic): jasmine.SpyObj<TDependency>;

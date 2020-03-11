@@ -3,4 +3,8 @@ export declare enum ObservablePropertyStrategy {
     Observable = 1,
     BehaviorSubject = 2
 }
-export declare function autoSpyObj(classUnderTest: () => any, spyProperties?: string[], observableStrategy?: ObservablePropertyStrategy): any;
+export declare function autoSpyObj({ classUnderTest, spyProperties, observableStrategy, }: {
+    classUnderTest: NewableFunction;
+    spyProperties?: string[];
+    observableStrategy?: ObservablePropertyStrategy;
+}): any;

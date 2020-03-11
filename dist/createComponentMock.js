@@ -11,10 +11,16 @@ function createComponentMock(className, selectorName, template = '') {
     if (!selectorName) {
         selectorName = inferSelectorName(className);
     }
-    const newClass = (window[className] = () => { });
+    const newClass = (getWindow()[className] = () => { });
     return tslib_2.__decorate([core_1.Component({ selector: selectorName, template })], newClass);
 }
 exports.createComponentMock = createComponentMock;
+function getWindow() {
+    if (typeof window === 'undefined') {
+        return {};
+    }
+    return window;
+}
 function inferSelectorName(className) {
     className = className.replace('Component', '');
     className = camel_to_kebab_1.default(className);

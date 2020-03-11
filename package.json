@@ -1,6 +1,6 @@
 {
   "name": "angular-unit-test-helper",
-  "version": "9.1.1",
+  "version": "9.1.2",
   "description": "Helper functions to help write unit tests in Angular using mocks and spies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -47,6 +47,7 @@
   },
   "homepage": "https://github.com/duluca/angular-unit-test-helper#readme",
   "devDependencies": {
+    "@angular/compiler": "^9.0.5",
     "@angular/core": "^9.0.5",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/jasmine": "^3.5.8",

@@ -9,7 +9,8 @@
   "exclude": [
     "**/*.d.ts",
     "**/tests",
-    "**/coverage"
+    "**/coverage",
+    "*.conf*.js"
   ],
   "reporter": [
     "lcov",

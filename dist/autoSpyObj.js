@@ -9,7 +9,7 @@ var ObservablePropertyStrategy;
     ObservablePropertyStrategy[ObservablePropertyStrategy["Observable"] = 1] = "Observable";
     ObservablePropertyStrategy[ObservablePropertyStrategy["BehaviorSubject"] = 2] = "BehaviorSubject";
 })(ObservablePropertyStrategy = exports.ObservablePropertyStrategy || (exports.ObservablePropertyStrategy = {}));
-function autoSpyObj(classUnderTest, spyProperties = [], observableStrategy = ObservablePropertyStrategy.Observable) {
+function autoSpyObj({ classUnderTest, spyProperties = [], observableStrategy = ObservablePropertyStrategy.Observable, }) {
     const props = Reflect.ownKeys(classUnderTest.prototype);
     const spyObj = jasmine.createSpyObj(classUnderTest.name, getAll_1.getAllFunctions(classUnderTest.prototype, props));
     const properties = getAll_1.getAllProperties(classUnderTest.prototype, props).concat(spyProperties);

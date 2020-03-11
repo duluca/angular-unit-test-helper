@@ -5,13 +5,13 @@ describe('autoSpyObj', () => {
   let weatherServiceMock: jasmine.SpyObj<WeatherService>
 
   it('should create a spy', () => {
-    const weatherServiceSpy = autoSpyObj({
-      classUnderTest: WeatherService,
-      spyProperties: ['currentWeather$'],
-      observableStrategy: ObservablePropertyStrategy.BehaviorSubject,
-    })
+    const weatherServiceSpy = autoSpyObj(
+      WeatherService,
+      ['currentWeather$'],
+      ObservablePropertyStrategy.BehaviorSubject
+    )
 
-    weatherServiceMock = weatherServiceSpy
+    weatherServiceMock = weatherServiceSpy as any
 
     weatherServiceMock.currentWeather$.next(fakeWeather)
 

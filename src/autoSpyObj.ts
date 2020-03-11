@@ -9,15 +9,15 @@ export enum ObservablePropertyStrategy {
   BehaviorSubject,
 }
 
-export function autoSpyObj({
-  classUnderTest,
+export function autoSpyObj(
+  classUnderTest: NewableFunction,
   spyProperties = [],
-  observableStrategy = ObservablePropertyStrategy.Observable,
-}: {
+  observableStrategy = ObservablePropertyStrategy.Observable
+): {
   classUnderTest: NewableFunction
   spyProperties?: string[]
   observableStrategy?: ObservablePropertyStrategy
-}) {
+} {
   const props = Reflect.ownKeys(classUnderTest.prototype)
   const spyObj = jasmine.createSpyObj(
     classUnderTest.name,

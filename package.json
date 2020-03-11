@@ -1,6 +1,6 @@
 {
   "name": "angular-unit-test-helper",
-  "version": "9.1.7",
+  "version": "9.1.8",
   "description": "Helper functions to help write unit tests in Angular using mocks and spies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -4,4 +4,4 @@ export declare enum ObservablePropertyStrategy {
     Observable = 1,
     BehaviorSubject = 2
 }
-export declare function autoSpyObj<TClassUnderTest>(classUnderTest: NewableFunction, spyProperties?: never[], observableStrategy?: ObservablePropertyStrategy): jasmine.SpyObj<TClassUnderTest>;
+export declare function autoSpyObj<TClassUnderTest>(classUnderTest: NewableFunction, spyProperties?: string[], observableStrategy?: ObservablePropertyStrategy): jasmine.SpyObj<TClassUnderTest>;

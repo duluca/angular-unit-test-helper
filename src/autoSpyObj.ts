@@ -11,7 +11,7 @@ export enum ObservablePropertyStrategy {
 
 export function autoSpyObj<TClassUnderTest>(
   classUnderTest: NewableFunction,
-  spyProperties = [],
+  spyProperties = [] as string[],
   observableStrategy = ObservablePropertyStrategy.Observable
 ): jasmine.SpyObj<TClassUnderTest> {
   const props = Reflect.ownKeys(classUnderTest.prototype)

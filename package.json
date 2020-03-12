@@ -1,20 +1,18 @@
 {
   "name": "angular-unit-test-helper",
-  "version": "1.4.1",
+  "version": "1.5.3",
   "description": "Helper functions to help write unit tests in Angular using mocks and spies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo 'I need tests'",
-    "test:karma": "karma start",
-    "dev": "webpack-dev-server --inline --hot",
-    "build:webpack": "webpack -p",
     "standardize": "import-sort --write \"**/*.ts\" && prettier --write \"**/*.ts\"",
     "build": "npm run standardize && tsc",
     "pretest": "npm run build",
     "preversion": "npm test",
     "postversion": "npm publish",
-    "postpublish": "git push origin --all; git push origin --tags"
+    "postpublish": "git push origin --all; git push origin --tags",
+    "updatePeers": "npm i -D @angular/core@latest rxjs@latest typescript@3.7.5 jasmine@latest"
   },
   "repository": {
     "type": "git",
@@ -35,31 +33,25 @@
   },
   "homepage": "https://github.com/duluca/angular-unit-test-helper#readme",
   "devDependencies": {
-    "@angular/core": "^7.2.13",
-    "@types/jasmine": "^3.3.12",
+    "@angular/core": "^9.0.6",
+    "@types/jasmine": "^3.5.9",
     "dev-norms": "^1.7.0",
     "import-sort": "^6.0.0",
     "import-sort-cli": "^6.0.0",
     "import-sort-parser-typescript": "^6.0.0",
     "import-sort-style-module": "^6.0.0",
-    "jasmine": "^3.4.0",
-    "jasmine-core": "^3.4.0",
-    "karma": "^4.1.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-jasmine": "^2.0.1",
-    "karma-webpack": "^3.0.5",
-    "prettier": "^1.16.4",
-    "rxjs": "^6.4.0",
-    "ts-loader": "^5.3.3",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.3",
-    "webpack": "^4.30.0",
-    "webpack-dev-server": "^3.3.1"
+    "jasmine": "^3.5.0",
+    "jasmine-core": "^3.5.0",
+    "prettier": "^1.19.1",
+    "rxjs": "^6.5.4",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.7.0",
+    "typescript": "^3.7.5"
   },
   "peerDependencies": {
-    "rxjs": ">= 5 <= 9",
-    "@angular/core": ">= 4 <=9",
-    "typescript": ">= 2 <= 4",
+    "rxjs": "^6",
+    "@angular/core": "^9",
+    "typescript": "^3",
     "jasmine": ">= 3 <= 4"
   },
   "importSort": {

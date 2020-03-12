@@ -1,20 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const rxjs_1 = require("rxjs");
-function addProperty(object, propertyName, valueToReturn) {
+import { BehaviorSubject, Observable } from 'rxjs';
+export function addProperty(object, propertyName, valueToReturn) {
     Object.defineProperty(object, propertyName, {
-        get: () => valueToReturn,
+        get: function () { return valueToReturn; },
         enumerable: true,
         configurable: true,
     });
 }
-exports.addProperty = addProperty;
-function addPropertyAsBehaviorSubject(object, propertyName) {
-    addProperty(object, propertyName, new rxjs_1.BehaviorSubject(null));
+export function addPropertyAsBehaviorSubject(object, propertyName) {
+    addProperty(object, propertyName, new BehaviorSubject(null));
 }
-exports.addPropertyAsBehaviorSubject = addPropertyAsBehaviorSubject;
-function addPropertyAsObservable(object, propertyName) {
-    addProperty(object, propertyName, new rxjs_1.Observable());
+export function addPropertyAsObservable(object, propertyName) {
+    addProperty(object, propertyName, new Observable());
 }
-exports.addPropertyAsObservable = addPropertyAsObservable;
 //# sourceMappingURL=addProperty.js.map

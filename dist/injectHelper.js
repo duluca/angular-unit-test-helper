@@ -1,12 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const testing_1 = require("@angular/core/testing");
-function injectOne(dependency, testBed = testing_1.TestBed) {
+import { TestBed } from '@angular/core/testing';
+export function injectOne(dependency, testBed) {
+    if (testBed === void 0) { testBed = TestBed; }
     return testBed.inject(dependency);
 }
-exports.injectOne = injectOne;
-function injectSpy(dependency, testBed = testing_1.TestBed) {
+export function injectSpy(dependency, testBed) {
+    if (testBed === void 0) { testBed = TestBed; }
     return injectOne(dependency, testBed);
 }
-exports.injectSpy = injectSpy;
 //# sourceMappingURL=injectHelper.js.map

@@ -24,7 +24,7 @@ Check out my sample projects that leverage `angular-unit-test-helper`:
 - https://github.com/duluca/local-weather-app
 - https://github.com/duluca/lemon-mart
 
-Use the `ng-tester` package to generate robust and efficient unit tests using `ng-bullet` and `angular-unit-test-helper`.
+Use the [`ng-tester`](https://www.npmjs.com/package/ng-tester) package to generate robust and efficient unit tests using `ng-bullet` and `angular-unit-test-helper`.
 
 Usage
 

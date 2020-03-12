@@ -50,6 +50,9 @@ jobs:
       - run: npm pack
 
       - run: cp *.tgz /tmp/circle-artifacts
+      - store_artifacts:
+          path: /tmp/circle-artifacts
+          destination: pkg
 
 workflows:
   version: 2

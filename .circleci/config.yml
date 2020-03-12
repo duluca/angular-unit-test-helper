@@ -47,7 +47,9 @@ jobs:
       - coveralls/upload
 
       - run: npm run build
-      - run: npm run pack
+      - run: npm pack
+      - store_artifacts:
+        path: *.tgz
 
 workflows:
   version: 2

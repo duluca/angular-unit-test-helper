@@ -19,5 +19,6 @@
       "jasmine",
       "node"
     ],
+    "experimentalDecorators": true
   }
 }

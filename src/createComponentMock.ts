@@ -8,15 +8,24 @@ export function createComponentMock(
   template = ''
 ) {
   if (!className || !className.endsWith('Component')) {
-    throw 'Expected class name to end with Component, but it did not. Provide a valid component class name.'
+    throw new Error(
+      'Expected class name to end with Component, but it did not. Provide a valid component class name.'
+    )
   }
 
   if (!selectorName) {
     selectorName = inferSelectorName(className)
   }
 
-  const newClass: any = ((window as any)[className] = () => {})
-  return __decorate([Component({ selector: selectorName, template: template })], newClass)
+  const newClass: any = (getWindow()[className] = () => {})
+  return __decorate([Component({ selector: selectorName, template })], newClass)
+}
+
+function getWindow(): any {
+  if (typeof window === 'undefined') {
+    return {}
+  }
+  return window
 }
 
 function inferSelectorName(className: string) {

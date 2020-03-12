@@ -3,6 +3,11 @@
     "eamodio.gitlens",
     "amatiasq.sort-imports",
     "esbenp.prettier-vscode",
-    "github.vscode-pull-request-github"
+    "DSKWRK.vscode-generate-getter-setter",
+    "johnpapa.vscode-peacock",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "PKief.material-icon-theme",
+    "WallabyJs.quokka-vscode"
   ]
 }

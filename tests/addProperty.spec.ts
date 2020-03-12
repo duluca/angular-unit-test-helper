@@ -1,6 +1,6 @@
-describe('addProperty', function() {
+describe('addProperty', () => {
   it('should ...', () => {
-    let unexpected = 'a'
+    const unexpected = 'a'
     expect(unexpected).toEqual('a')
   })
 })

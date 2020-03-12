@@ -20,10 +20,106 @@ npm i -D angular-unit-test-helper
 
 ## Example Projects
 
-Check out my sample projects:
-
+Check out my sample projects that leverage `angular-unit-test-helper`:
 - https://github.com/duluca/local-weather-app
 - https://github.com/duluca/lemon-mart
+
+Use the `ng-tester` package to generate robust and efficient unit tests using `ng-bullet` and `angular-unit-test-helper`.
+
+Usage
+
+```bash
+npm i -D ng-tester
+npx ng g ng-tester:unit
+```
+
+Sample test
+
+```ts
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import {
+  addProperty,
+  addPropertyAsBehaviorSubject,
+  autoSpyObj,
+  createComponentMock,
+  getAllFunctions,
+  getAllProperties
+} from 'angular-unit-test-helper'
+import { configureTestSuite } from 'ng-bullet'
+
+import { AppComponent } from './app.component'
+
+describe('AppComponent', () => {
+  let component: AppComponent
+  // Declare service mocks
+  let fakeServiceSpy: jasmine.SpyObj<FakeService>
+
+  beforeEach(() => {
+    // Initialize mocked services from actual services
+    fakeServiceSpy = autoSpyObj(FakeService)
+  })
+
+  describe('DOM Tests', () => {
+    let fixture: ComponentFixture<AppComponent>
+
+    configureTestSuite(() => {
+      TestBed.configureTestingModule({
+        declarations: [AppComponent],
+        imports: [],
+        providers: [
+          // Inject mocked services into TestBed
+          { provide: FakeService, useFactory: () => fakeServiceSpy }
+        ],
+      })
+    })
+
+    beforeEach(() => {
+      // Get injected services from TestBed
+      fakeServiceSpy = TestBed.get(FakeService)
+
+      fixture = TestBed.createComponent(AppComponent)
+      component = fixture.componentInstance
+    })
+
+    it('should create', () => {
+      fixture.detectChanges()
+      expect(component).toBeTruthy()
+    })
+
+    it('test goes here', () => {
+      // arrange
+
+
+      // act
+
+
+      // assert
+
+    })
+  })
+
+  describe('Functional Tests', () => {
+    beforeEach(() => {
+      // Create component instance with mocked services
+      component = new AppComponent(fakeServiceSpy)
+    })
+
+    it('test goes here', () => {
+      // arrange
+
+
+      // act
+
+
+      // assert
+
+    })
+  }
+})
+
+```
+
+For more information see https://github.com/bjsawyer/ng-tester/.
 
 ## Features
 

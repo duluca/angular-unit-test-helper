@@ -63,3 +63,5 @@ typings/
 *.js.map
 declarations
 test_results
+
+dist

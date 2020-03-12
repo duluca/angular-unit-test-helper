@@ -155,6 +155,46 @@ beforeEach(() => {
 })
 ```
 
+### `injectOne<TDependency, TReturn>(dependency: Type<TDependency>): TReturn`
+
+Helper function to inject a dependency, like a service, into the TestBed with a typed return variable.
+
+Usage
+
+```ts
+beforeEach(() => {
+  weatherServiceMock = injectOne(WeatherService)
+})
+```
+
+Replaces
+
+```ts
+beforeEach(() => {
+  weatherServiceMock = TestBed.inject(WeatherService) as any
+})
+```
+
+### `injectSpy<TDependency>(dependency: Type<TDependency>): jasmine.SpyObj<TDependency>`
+
+Helper function to inject a dependency, like services, into the TestBed and assign it to the mocked SpyObj.
+
+Usage
+
+```ts
+beforeEach(() => {
+  weatherServiceMock = injectSpy(WeatherService)
+})
+```
+
+Replaces
+
+```ts
+beforeEach(() => {
+  weatherServiceMock = TestBed.inject(WeatherService) as any
+})
+```
+
 ### `getAllFunctions(prototype: any, props?: (string | number | symbol)[])`
 
 Helper function that return all functions in a given Class using reflection, so you don't have to provide an instance of the object.

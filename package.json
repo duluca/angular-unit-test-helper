@@ -1,6 +1,6 @@
 {
   "name": "angular-unit-test-helper",
-  "version": "9.1.8",
+  "version": "9.1.11",
   "description": "Helper functions to help write unit tests in Angular using mocks and spies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,11 +23,12 @@
     "prepare": "npm run build",
     "test:ci": "ts-node ./node_modules/jasmine-xml-reporter/bin/jasmine.js --config=./jasmine.json --junitreport --output=test_results/",
     "test:nyc": "nyc ts-node node_modules/jasmine/bin/jasmine --config=./jasmine.json --cache=false",
-    "init:env": "init-dev-env generate-dot-env example.env -f"
+    "init:env": "init-dev-env generate-dot-env example.env -f",
+    "updatePeers": "npm i -D @angular/core@latest @angular/compiler@latest rxjs@latest typescript@3.7.5 jasmine@latest"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/duluca/angular-unit-test-helper.git"
+    "url": "git+https://github.com/duluca/angular-unit-test-helper.git"
   },
   "keywords": [
     "angular",
@@ -45,7 +46,7 @@
   "homepage": "https://github.com/duluca/angular-unit-test-helper#readme",
   "devDependencies": {
     "@angular/compiler": "^9.0.6",
-    "@angular/core": "^9.0.5",
+    "@angular/core": "^9.0.6",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/jasmine": "^3.5.9",
     "@types/node": "^13.9.0",
@@ -58,19 +59,18 @@
     "import-sort-style-module": "^6.0.0",
     "init-dev-env": "^1.0.0",
     "jasmine": "^3.5.0",
-    "jasmine-node": "^3.0.0",
+    "jasmine-core": "^3.5.0",
     "jasmine-xml-reporter": "^1.2.1",
     "npm-run-all": "^4.1.5",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
     "prettier-tslint": "^0.4.2",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.5.3",
+    "rxjs": "^6.5.4",
     "source-map-support": "^0.5.16",
     "ts-loader": "^6.2.1",
-    "ts-node": "^8.6.2",
-    "tslib": "^1.11.1",
-    "tslint": "^5.20.1",
+    "ts-node": "^8.7.0",
+    "tslint": "^6.1.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-etc": "^1.10.1",
     "tslint-plugin-prettier": "^2.1.0",
@@ -81,8 +81,10 @@
   "peerDependencies": {
     "rxjs": "^6",
     "@angular/core": "^9",
-    "typescript": "^3.7.5",
-    "jasmine": "^3.5.0"
+    "@angular/compiler": "^9",
+    "typescript": "^3",
+    "jasmine": ">= 3 <= 4",
+    "zone.js": "^0.10.2"
   },
   "importSort": {
     ".ts, .tsx": {
@@ -91,8 +93,14 @@
       "options": {}
     }
   },
+  "prettier": {
+    "printWidth": 90,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "parser": "typescript"
+  },
   "dependencies": {
-    "camel-to-kebab": "^1.1.0",
-    "npm-check-updates": "^4.0.4"
+    "camel-to-kebab": "^1.1.0"
   }
 }

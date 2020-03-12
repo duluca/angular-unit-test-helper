@@ -46,38 +46,16 @@ jobs:
       # requires coveralls account and token specific to repo to be stored in CircleCI
       - coveralls/upload
 
-      - run: npm run
+      - run: npm run build
+      - run: npm pack
 
-  deploy:
-    docker:
-      - image: circleci/node:lts
-    working_directory: ~/repo
-    steps:
-      - attach_workspace:
-          at: /tmp/workspace
-
-      - checkout
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: npm ci
+      - run: cp *.tgz /tmp/circle-artifacts
+      - store_artifacts:
+          path: /tmp/circle-artifacts
+          destination: angular-unit-test-helper.tgz
 
 workflows:
   version: 2
-  build-and-deploy:
+  build-and-test:
     jobs:
       - build
-      - hold:
-          type: approval
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
-      - deploy:
-          requires:
-            - hold

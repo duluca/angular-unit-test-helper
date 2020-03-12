@@ -24,99 +24,13 @@ Check out my sample projects that leverage `angular-unit-test-helper`:
 - https://github.com/duluca/local-weather-app
 - https://github.com/duluca/lemon-mart
 
-Use the `ng-tester` package to generate robust and efficient unit tests using `ng-bullet` and `angular-unit-test-helper`.
+Use the `ng-tester` package to generate robust and efficient unit tests using `angular-unit-test-helper`.
 
 Usage
 
 ```bash
 npm i -D ng-tester
 npx ng g ng-tester:unit
-```
-
-Sample test
-
-```ts
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-import {
-  addProperty,
-  addPropertyAsBehaviorSubject,
-  autoSpyObj,
-  createComponentMock,
-  getAllFunctions,
-  getAllProperties
-} from 'angular-unit-test-helper'
-import { configureTestSuite } from 'ng-bullet'
-
-import { AppComponent } from './app.component'
-
-describe('AppComponent', () => {
-  let component: AppComponent
-  // Declare service mocks
-  let fakeServiceSpy: jasmine.SpyObj<FakeService>
-
-  beforeEach(() => {
-    // Initialize mocked services from actual services
-    fakeServiceSpy = autoSpyObj(FakeService)
-  })
-
-  describe('DOM Tests', () => {
-    let fixture: ComponentFixture<AppComponent>
-
-    configureTestSuite(() => {
-      TestBed.configureTestingModule({
-        declarations: [AppComponent],
-        imports: [],
-        providers: [
-          // Inject mocked services into TestBed
-          { provide: FakeService, useFactory: () => fakeServiceSpy }
-        ],
-      })
-    })
-
-    beforeEach(() => {
-      // Get injected services from TestBed
-      fakeServiceSpy = TestBed.get(FakeService)
-
-      fixture = TestBed.createComponent(AppComponent)
-      component = fixture.componentInstance
-    })
-
-    it('should create', () => {
-      fixture.detectChanges()
-      expect(component).toBeTruthy()
-    })
-
-    it('test goes here', () => {
-      // arrange
-
-
-      // act
-
-
-      // assert
-
-    })
-  })
-
-  describe('Functional Tests', () => {
-    beforeEach(() => {
-      // Create component instance with mocked services
-      component = new AppComponent(fakeServiceSpy)
-    })
-
-    it('test goes here', () => {
-      // arrange
-
-
-      // act
-
-
-      // assert
-
-    })
-  }
-})
-
 ```
 
 For more information see https://github.com/bjsawyer/ng-tester/.
@@ -233,47 +147,7 @@ beforeEach(() => {
 
 ### `injectSpy<TDependency>(dependency: Type<TDependency>): jasmine.SpyObj<TDependency>`
 
-Helper function to inject a dependency, like services, into the TestBed and assign it to the mocked SpyObj.
-
-Usage
-
-```ts
-beforeEach(() => {
-  weatherServiceMock = injectSpy(WeatherService)
-})
-```
-
-Replaces
-
-```ts
-beforeEach(() => {
-  weatherServiceMock = TestBed.inject(WeatherService) as any
-})
-```
-
-### `injectOne<TDependency, TReturn>(dependency: Type<TDependency>): TReturn`
-
-Helper function to inject a dependency, like a service, into the TestBed with a typed return variable.
-
-Usage
-
-```ts
-beforeEach(() => {
-  weatherServiceMock = injectOne(WeatherService)
-})
-```
-
-Replaces
-
-```ts
-beforeEach(() => {
-  weatherServiceMock = TestBed.inject(WeatherService) as any
-})
-```
-
-### `injectSpy<TDependency>(dependency: Type<TDependency>): jasmine.SpyObj<TDependency>`
-
-Helper function to inject a dependency, like services, into the TestBed and assign it to the mocked SpyObj.
+Same as injectOne, but more descriptive to read for developers if returning a mocked SpyObj.
 
 Usage
 
@@ -303,6 +177,7 @@ Helper function that return all property getters in a given Class using reflecti
 
 - Send PR, will accept
 - To setup the project, run `npm install`
-- Test against the example project listed below using `npm link`
+- Test against the example project listed below using `npm pack` to create a `.tgz` file and install the `.tgz` file using `npm install -D ../path/to/your.tgz`
+  - Using `npm link` doesn't work as expected due `devDependencies` being symlinked to the parent Angular project, causing issues with the framework.
 - To publish the project, run `npm version major|minor|patch`
   > Read more about that setup by Isaac Schlueter [here](https://blog.npmjs.org/post/184553141742/easy-automatic-npm-publishes)

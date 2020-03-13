@@ -1,7 +1,7 @@
 import { TestBedStatic } from '@angular/core/testing'
 
 import { injectClass, injectSpy } from '../src/index'
-import { WeatherService } from './testObjects'
+import { AbstractWeatherService, WeatherService } from './testObjects'
 
 describe('injectHelper', () => {
   let testBedMock: jasmine.SpyObj<TestBedStatic>
@@ -27,6 +27,26 @@ describe('injectHelper', () => {
     )
 
     weatherServiceMock = injectSpy(WeatherService, testBedMock)
+
+    expect(weatherServiceMock).toBeDefined()
+  })
+
+  it('should injectClass for abstract class', () => {
+    testBedMock.inject.and.returnValue(
+      jasmine.createSpyObj('weatherServiceMock', ['foo'])
+    )
+
+    weatherServiceMock = injectClass(AbstractWeatherService, testBedMock)
+
+    expect(weatherServiceMock).toBeDefined()
+  })
+
+  it('should injectSpy for abstract class', () => {
+    testBedMock.inject.and.returnValue(
+      jasmine.createSpyObj('weatherServiceMock', ['foo'])
+    )
+
+    weatherServiceMock = injectSpy(AbstractWeatherService, testBedMock)
 
     expect(weatherServiceMock).toBeDefined()
   })

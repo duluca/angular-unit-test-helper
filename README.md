@@ -24,7 +24,7 @@ Check out my sample projects that leverage `angular-unit-test-helper`:
 - https://github.com/duluca/local-weather-app
 - https://github.com/duluca/lemon-mart
 
-Use the `ng-tester` package to generate robust and efficient unit tests using `angular-unit-test-helper`.
+Use the [`ng-tester`](https://www.npmjs.com/package/ng-tester) package to generate robust and efficient unit tests using `angular-unit-test-helper`.
 
 Usage
 
@@ -125,7 +125,7 @@ Replaces boilerplate
 class MockCurrentWeatherComponent {}
 ```
 
-### `injectClass<TDependency, TReturn>(dependency: Type<TDependency>): TReturn`
+### `injectClass<TDependency, TReturn>(dependency: Type<TDependency> | AbstractType<TDependency>): TReturn`
 
 Helper function to inject a dependency, like a service, into the TestBed with a typed return variable.
 
@@ -145,7 +145,7 @@ beforeEach(() => {
 })
 ```
 
-### `injectSpy<TDependency>(dependency: Type<TDependency>): jasmine.SpyObj<TDependency>`
+### `injectSpy<TDependency>(dependency: Type<TDependency> | AbstractType<TDependency>): jasmine.SpyObj<TDependency>`
 
 Same as injectOne, but more descriptive to read for developers if returning a mocked SpyObj.
 

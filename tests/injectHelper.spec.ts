@@ -1,6 +1,6 @@
 import { TestBedStatic } from '@angular/core/testing'
 
-import { injectOne, injectSpy } from '../src/index'
+import { injectClass, injectSpy } from '../src/index'
 import { WeatherService } from './testObjects'
 
 describe('injectHelper', () => {
@@ -11,12 +11,12 @@ describe('injectHelper', () => {
     testBedMock = jasmine.createSpyObj('TestBed', ['inject'])
   })
 
-  it('should injectOne', () => {
+  it('should injectClass', () => {
     testBedMock.inject.and.returnValue(
       jasmine.createSpyObj('weatherServiceMock', ['foo'])
     )
 
-    weatherServiceMock = injectOne(WeatherService, testBedMock)
+    weatherServiceMock = injectClass(WeatherService, testBedMock)
 
     expect(weatherServiceMock).toBeDefined()
   })

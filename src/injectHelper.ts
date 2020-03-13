@@ -12,5 +12,5 @@ export function injectSpy<TDependency>(
   dependency: Type<TDependency>,
   testBed = TestBed
 ): jasmine.SpyObj<TDependency> {
-  return injectOne<TDependency, jasmine.SpyObj<TDependency>>(dependency, testBed)
+  return injectClass<TDependency, jasmine.SpyObj<TDependency>>(dependency, testBed)
 }

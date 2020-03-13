@@ -1,7 +1,7 @@
 import { Type } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-export function injectOne<TDependency, TReturn>(
+export function injectClass<TDependency, TReturn>(
   dependency: Type<TDependency>,
   testBed = TestBed
 ): TReturn {

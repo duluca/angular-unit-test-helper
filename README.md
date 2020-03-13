@@ -125,7 +125,7 @@ Replaces boilerplate
 class MockCurrentWeatherComponent {}
 ```
 
-### `injectOne<TDependency, TReturn>(dependency: Type<TDependency>): TReturn`
+### `injectClass<TDependency, TReturn>(dependency: Type<TDependency>): TReturn`
 
 Helper function to inject a dependency, like a service, into the TestBed with a typed return variable.
 
@@ -133,7 +133,7 @@ Usage
 
 ```ts
 beforeEach(() => {
-  weatherServiceMock = injectOne(WeatherService)
+  weatherServiceMock = injectClass(WeatherService)
 })
 ```
 

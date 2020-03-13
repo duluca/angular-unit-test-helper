@@ -1,6 +1,6 @@
 {
   "name": "angular-unit-test-helper",
-  "version": "9.2.1",
+  "version": "9.2.2",
   "description": "Helper functions to help write unit tests in Angular using mocks and spies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,8 +9,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.src.json",
     "pretest": "npm run build && npm run build:test",
-    "preversion": "npm test",
-    "postversion": "npm publish",
+    "prepublish": "npm test",
     "postpublish": "git push origin --all && git push origin --tags",
     "style": "import-sort -l \"{src,tests}/**/*.ts\" && prettier --check \"{src,tests}/**/*.ts\"",
     "style:fix": "import-sort --write \"{src,tests}/**/*.ts\" && prettier --write \"{src,tests}/**/*.ts\"",

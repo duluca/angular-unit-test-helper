@@ -34,3 +34,11 @@ export class WeatherService {
     console.log(a + b)
   }
 }
+
+export abstract class AbstractWeatherService {
+  readonly currentWeather$ = new BehaviorSubject<ICurrentWeather>(defaultWeather)
+
+  constructor(a: string, b: string) {
+    console.log(a + b)
+  }
+}

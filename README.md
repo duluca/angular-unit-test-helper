@@ -126,7 +126,7 @@ Replaces boilerplate
 class MockCurrentWeatherComponent {}
 ```
 
-### `injectClass<TDependency, TReturn>(dependency: Type<TDependency> | AbstractType<TDependency>): TReturn`
+### `injectClass<TDependency>(dependency: Type<TDependency> | AbstractType<TDependency>): TDependency`
 
 Helper function to inject a dependency, like a service, into the TestBed with a typed return variable.
 
@@ -134,7 +134,7 @@ Usage
 
 ```ts
 beforeEach(() => {
-  weatherServiceMock = injectClass(WeatherService)
+  weatherService = injectClass(WeatherService)
 })
 ```
 
@@ -142,13 +142,13 @@ Replaces
 
 ```ts
 beforeEach(() => {
-  weatherServiceMock = TestBed.inject(WeatherService) as any
+  weatherService = TestBed.inject(WeatherService)
 })
 ```
 
 ### `injectSpy<TDependency>(dependency: Type<TDependency> | AbstractType<TDependency>): jasmine.SpyObj<TDependency>`
 
-Same as injectOne, but more descriptive to read for developers if returning a mocked SpyObj.
+Similar to `injectClass`, but more descriptive to read for developers if returning a mocked SpyObj.
 
 Usage
 

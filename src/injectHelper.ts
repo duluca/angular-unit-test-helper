@@ -1,16 +1,16 @@
 import { AbstractType, Type } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-export function injectClass<TDependency, TReturn>(
+export function injectClass<TDependency>(
   dependency: Type<TDependency> | AbstractType<TDependency>,
   testBed = TestBed
-): TReturn {
-  return testBed.inject(dependency) as any
+): TDependency {
+  return testBed.inject(dependency)
 }
 
 export function injectSpy<TDependency>(
   dependency: Type<TDependency> | AbstractType<TDependency>,
   testBed = TestBed
 ): jasmine.SpyObj<TDependency> {
-  return injectClass<TDependency, jasmine.SpyObj<TDependency>>(dependency, testBed)
+  return injectClass(dependency, testBed) as jasmine.SpyObj<TDependency>
 }

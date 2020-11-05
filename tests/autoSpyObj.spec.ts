@@ -15,7 +15,7 @@ describe('autoSpyObj', () => {
 
     weatherServiceMock.currentWeather$.next(fakeWeather)
 
-    weatherServiceMock.currentWeather$.subscribe(current => {
+    weatherServiceMock.currentWeather$.subscribe((current) => {
       expect(weatherServiceSpy).toBeDefined()
       expect(weatherServiceMock).toBeDefined()
       expect(current.city).toEqual('Bethesda')

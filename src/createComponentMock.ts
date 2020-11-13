@@ -5,16 +5,8 @@ import { __decorate } from 'tslib'
 export function createComponentMock(
   className: string,
   selectorName?: string,
-  template = '',
-  windowRef: unknown = () => window
+  template = ''
 ) {
-  if (
-    typeof windowRef === 'undefined' ||
-    (typeof windowRef === 'function' && typeof windowRef() === 'undefined')
-  ) {
-    throw new Error('Window is not defined')
-  }
-
   if (!className || !className.endsWith('Component')) {
     throw new Error(
       'Expected class name to end with Component, but it did not. Provide a valid component class name.'
@@ -25,8 +17,16 @@ export function createComponentMock(
     selectorName = inferSelectorName(className)
   }
 
-  const newClass: any = ((windowRef as any)[className] = {})
+  const newClass: any = (getWindow()[className] = () => {})
   return __decorate([Component({ selector: selectorName, template })], newClass)
+}
+
+function getWindow(): any {
+  if (typeof window === 'undefined') {
+    return {}
+  }
+  /* istanbul ignore next */
+  return window
 }
 
 function inferSelectorName(className: string) {

@@ -60,4 +60,10 @@ describe('autoSpyObj', () => {
 
     expect(weatherServiceMock.currentWeather$).toBeInstanceOf(Object)
   })
+
+  it('should create a spy with defaults', () => {
+    const weatherServiceSpy = autoSpyObj(WeatherService)
+
+    expect(weatherServiceSpy).toBeDefined()
+  })
 })

@@ -25,7 +25,7 @@ export function createComponentMock(
     selectorName = inferSelectorName(className)
   }
 
-  const newClass: any = ((windowRef as any)[className] = () => {})
+  const newClass: any = ((windowRef as any)[className] = {})
   return __decorate([Component({ selector: selectorName, template })], newClass)
 }
 

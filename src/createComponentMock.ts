@@ -25,6 +25,7 @@ function getWindow(): any {
   if (typeof window === 'undefined') {
     return {}
   }
+  /* istanbul ignore next */
   return window
 }
 

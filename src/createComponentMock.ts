@@ -6,9 +6,12 @@ export function createComponentMock(
   className: string,
   selectorName?: string,
   template = '',
-  windowRef = () => window
+  windowRef: unknown = () => window
 ) {
-  if (typeof windowRef() === 'undefined') {
+  if (
+    typeof windowRef === 'undefined' ||
+    (typeof windowRef === 'function' && typeof windowRef() === 'undefined')
+  ) {
     throw new Error('Window is not defined')
   }
 

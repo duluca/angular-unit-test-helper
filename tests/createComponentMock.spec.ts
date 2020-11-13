@@ -9,7 +9,7 @@ describe('createComponentMock', () => {
 
   it('should create a mocked component with undefined window', () => {
     expect(() =>
-      createComponentMock('CurrentWeatherComponent', undefined, '', undefined)
+      createComponentMock('CurrentWeatherComponent', undefined, '', () => undefined)
     ).toThrowError()
   })
 

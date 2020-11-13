@@ -24,7 +24,7 @@ export function autoSpyObj<TClassUnderTest>(
     spyProperties
   )
 
-  properties.map(name => {
+  properties.map((name) => {
     let defaultValue = {}
 
     if (typeof name === 'string' && name.endsWith('$')) {

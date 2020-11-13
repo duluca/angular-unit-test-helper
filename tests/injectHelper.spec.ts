@@ -21,6 +21,10 @@ describe('injectHelper', () => {
     expect(weatherServiceMock).toBeDefined()
   })
 
+  it('should injectClass no mock', () => {
+    expect(() => (weatherServiceMock = injectClass(WeatherService))).toThrowError()
+  })
+
   it('should injectSpy', () => {
     testBedMock.inject.and.returnValue(
       jasmine.createSpyObj('weatherServiceMock', ['foo'])
@@ -29,6 +33,10 @@ describe('injectHelper', () => {
     weatherServiceMock = injectSpy(WeatherService, testBedMock)
 
     expect(weatherServiceMock).toBeDefined()
+  })
+
+  it('should injectSpy no mock', () => {
+    expect(() => (weatherServiceMock = injectSpy(WeatherService))).toThrowError()
   })
 
   it('should injectClass for abstract class', () => {

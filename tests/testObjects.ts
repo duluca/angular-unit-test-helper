@@ -27,18 +27,22 @@ export const defaultWeather: ICurrentWeather = {
   description: '',
 }
 
-export class WeatherService {
-  readonly currentWeather$ = new BehaviorSubject<ICurrentWeather>(defaultWeather)
+export abstract class AbstractWeatherService {
+  abstract readonly currentWeather$: BehaviorSubject<ICurrentWeather>
 
-  constructor(a: string, b: string) {
-    console.log(a + b)
-  }
+  abstract get color(): string
+
+  constructor(public a: string, public b: string) {}
 }
 
-export abstract class AbstractWeatherService {
+export class WeatherService extends AbstractWeatherService {
   readonly currentWeather$ = new BehaviorSubject<ICurrentWeather>(defaultWeather)
 
+  get color() {
+    return 'red'
+  }
+
   constructor(a: string, b: string) {
-    console.log(a + b)
+    super(a, b)
   }
 }

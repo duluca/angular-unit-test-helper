@@ -32,9 +32,7 @@ export abstract class AbstractWeatherService {
 
   abstract get color(): string
 
-  constructor(a: string, b: string) {
-    console.log(a + b)
-  }
+  constructor(public a: string, public b: string) {}
 }
 
 export class WeatherService extends AbstractWeatherService {

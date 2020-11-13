@@ -53,9 +53,35 @@ jobs:
       - store_artifacts:
           path: /tmp/circle-artifacts
           destination: angular-unit-test-helper.tgz
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - circle-artifacts
+  deploy:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - attach_workspace:
+          at: /tmp/circle-artifacts
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish /tmp/circle-artifacts/angular-unit-test-helper.tgz
 
 workflows:
   version: 2
   build-and-test:
     jobs:
       - build
+      - hold:
+          type: approval
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - hold

@@ -58,7 +58,7 @@ jobs:
           command: |
             set -exu
             mkdir -p /tmp/workspace/pkg
-            mv angular-unit-test-helper.tgz /tmp/workspace/pkg/
+            mv /tmp/circle-artifacts/angular-unit-test-helper.tgz /tmp/workspace/pkg/
       - persist_to_workspace:
           root: /tmp/workspace
           paths:

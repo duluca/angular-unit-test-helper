@@ -53,22 +53,30 @@ jobs:
       - store_artifacts:
           path: /tmp/circle-artifacts
           destination: angular-unit-test-helper.tgz
+      - run:
+          name: Move compiled app to workspace
+          command: |
+            set -exu
+            mkdir -p /tmp/workspace/pkg
+            mv angular-unit-test-helper.tgz /tmp/workspace/pkg/
       - persist_to_workspace:
-          root: /tmp
+          root: /tmp/workspace
           paths:
-            - circle-artifacts
+            - pkg
   deploy:
     docker:
       - image: circleci/node:lts
+    working_directory: ~/repo
     steps:
       - attach_workspace:
-          at: /tmp/circle-artifacts
+          at: /tmp/workspace
+      - checkout
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
-          command: npm publish /tmp/circle-artifacts/angular-unit-test-helper.tgz
+          command: npm publish angular-unit-test-helper.tgz
 
 workflows:
   version: 2

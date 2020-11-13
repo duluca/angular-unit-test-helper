@@ -8,4 +8,8 @@ describe('createComponentMock', () => {
     createComponentMock('CurrentWeatherComponent')
     expect().nothing()
   })
+
+  it('should throw exception for misnamed component', () => {
+    expect(() => createComponentMock('CurrentWeather')).toThrowError()
+  })
 })

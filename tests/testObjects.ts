@@ -30,6 +30,10 @@ export const defaultWeather: ICurrentWeather = {
 export class WeatherService {
   readonly currentWeather$ = new BehaviorSubject<ICurrentWeather>(defaultWeather)
 
+  get color() {
+    return 'red'
+  }
+
   constructor(a: string, b: string) {
     console.log(a + b)
   }
@@ -37,6 +41,8 @@ export class WeatherService {
 
 export abstract class AbstractWeatherService {
   readonly currentWeather$ = new BehaviorSubject<ICurrentWeather>(defaultWeather)
+
+  abstract get color(): string
 
   constructor(a: string, b: string) {
     console.log(a + b)

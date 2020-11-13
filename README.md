@@ -4,7 +4,7 @@
 
 ![Angular Version](https://img.shields.io/badge/angular-v11-326839)
 [![CircleCI](https://circleci.com/gh/duluca/angular-unit-test-helper.svg?style=svg)](https://circleci.com/gh/duluca/angular-unit-test-helper)
-[![Coverage Status](https://coveralls.io/repos/github/duluca/angular-unit-test-helper/badge.svg)](https://coveralls.io/github/duluca/angular-unit-test-helper)
+[![Coverage Status](https://coveralls.io/repos/github/duluca/angular-unit-test-helper/badge.svg?branch=master)](https://coveralls.io/github/duluca/angular-unit-test-helper?branch=master)
 
 ## Goal
 

@@ -6,6 +6,8 @@
 [![CircleCI](https://circleci.com/gh/duluca/angular-unit-test-helper.svg?style=svg)](https://circleci.com/gh/duluca/angular-unit-test-helper)
 [![Coverage Status](https://coveralls.io/repos/github/duluca/angular-unit-test-helper/badge.svg?branch=master)](https://coveralls.io/github/duluca/angular-unit-test-helper?branch=master)
 
+[![npm](https://img.shields.io/npm/dt/angular-unit-test-helper)](https://www.npmjs.com/package/angular-unit-test-helper)
+
 ## Goal
 
 Minimal feature set to bridge obvious gaps in jasmine's support of modern JavaScript features. Ideally, I'd like to be using an auto-mocking library, but they don't play well with Angular's `TestBed` and `RxJS\BehaviorSubject`.

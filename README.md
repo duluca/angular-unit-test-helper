@@ -6,6 +6,7 @@
 [![CircleCI](https://circleci.com/gh/duluca/angular-unit-test-helper.svg?style=svg)](https://circleci.com/gh/duluca/angular-unit-test-helper)
 [![Coverage Status](https://coveralls.io/repos/github/duluca/angular-unit-test-helper/badge.svg?branch=master)](https://coveralls.io/github/duluca/angular-unit-test-helper?branch=master)
 
+[![npm](https://img.shields.io/npm/v/angular-unit-test-helper)](https://www.npmjs.com/package/angular-unit-test-helper)
 [![npm](https://img.shields.io/npm/dt/angular-unit-test-helper)](https://www.npmjs.com/package/angular-unit-test-helper)
 
 ## Goal

@@ -40,5 +40,6 @@
     "html.autoClosingTags": false,
     "gitlens.menus": {
         "editorGroup": false
-    }
+    },
+    "angular.enable-strict-mode-prompt": false
 }

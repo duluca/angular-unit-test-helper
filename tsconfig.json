@@ -8,7 +8,6 @@
       "node_modules/@types"
     ],
     "target": "es5",
-
     "strict": true,
     "esModuleInterop": true,
     "lib": [

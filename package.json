@@ -78,6 +78,6 @@
     "typescript": "^4"
   },
   "dependencies": {
-    "camel-to-kebab": "^1.1.0"
+    "camel-to-kebab": "^1.1.2"
   }
 }

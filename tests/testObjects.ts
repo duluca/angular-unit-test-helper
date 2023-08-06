@@ -32,7 +32,10 @@ export abstract class AbstractWeatherService {
 
   abstract get color(): string
 
-  constructor(public a: string, public b: string) {}
+  constructor(
+    public a: string,
+    public b: string
+  ) {}
 }
 
 export class WeatherService extends AbstractWeatherService {
@@ -40,9 +43,5 @@ export class WeatherService extends AbstractWeatherService {
 
   get color() {
     return 'red'
-  }
-
-  constructor(a: string, b: string) {
-    super(a, b)
   }
 }

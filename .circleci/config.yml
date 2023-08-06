@@ -1,10 +1,10 @@
 version: 2.1
 orbs:
-  coveralls: coveralls/coveralls@1.0.4
+  coveralls: coveralls/coveralls@2.2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:lts-browsers
+      - image: cimg/node:lts-browsers
 
     working_directory: ~/repo
 
@@ -18,7 +18,9 @@ jobs:
             - v1-dependencies-
 
       # check npm dependencies for security risks - run 'npm audit' to fix
-      - run: npx audit-ci --moderate --report-type full --skip-dev
+      - run:
+          name: Security Check
+          command: npx audit-ci --moderate --report-type full --skip-dev
 
       - run: npm ci
 
@@ -28,23 +30,26 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # ensure code formatting standards are adhered to - run 'npm run standardize' to fix
-      - run: npm run style
-      - run: npm run lint
+      - run:
+          name: Check for Code Style and Linting Issues
+          command: |
+            npm run style
+            npm run lint
 
-      - run: npm test
-
+      - run:
+          name: Run Tests and Check Code Coverage
+          command: npm run test:ci
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./test_results/
       - store_test_results:
           path: ./test_results
-
-      # run code coverage and store coverage report
-      - run: npm run test:nyc
       - store_artifacts:
           path: ./coverage
 
       # upload coverage report to coveralls for readme badge support
       # requires config.yml version 2.1 and orbs: coveralls: coveralls/coveralls@1.0.4
       # requires coveralls account and token specific to repo to be stored in CircleCI
-      - coveralls/upload
+      #- coveralls/upload
 
       - run: npm run build
       - run: npm pack
@@ -65,7 +70,7 @@ jobs:
             - pkg
   deploy:
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
     working_directory: ~/repo
     steps:
       - attach_workspace:
@@ -79,10 +84,10 @@ jobs:
           command: npm publish $(echo /tmp/workspace/pkg/*.tgz)
 
 workflows:
-  version: 2
   build-and-test:
     jobs:
-      - build
+      - build:
+          context: all
       - hold:
           type: approval
           requires:

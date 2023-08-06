@@ -14,15 +14,20 @@ export function autoSpyObj<TClassUnderTest>(
   spyProperties = [] as string[],
   observableStrategy = ObservablePropertyStrategy.Observable
 ): jasmine.SpyObj<TClassUnderTest> {
-  const props = Reflect.ownKeys(classUnderTest.prototype)
+  const props = Reflect.ownKeys(classUnderTest.prototype as object)
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const spyObj: jasmine.SpyObj<TClassUnderTest> = jasmine.createSpyObj(
     classUnderTest.name,
-    getAllFunctions(classUnderTest.prototype, props)
+    getAllFunctions(
+      classUnderTest.prototype as { [key: string | number | symbol]: unknown },
+      props
+    )
   )
 
-  const properties = getAllProperties(classUnderTest.prototype, props).concat(
-    spyProperties
-  )
+  const properties = getAllProperties(
+    classUnderTest.prototype as { [key: string | number | symbol]: unknown },
+    props
+  ).concat(spyProperties)
 
   properties.map((name) => {
     let defaultValue = {}

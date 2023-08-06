@@ -18,7 +18,9 @@ jobs:
             - v1-dependencies-
 
       # check npm dependencies for security risks - run 'npm audit' to fix
-      - run: npx audit-ci --moderate --report-type full --skip-dev
+      - run:
+          name: Security Check
+          command: npx audit-ci --moderate --report-type full --skip-dev
 
       - run: npm ci
 
@@ -28,16 +30,19 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # ensure code formatting standards are adhered to - run 'npm run standardize' to fix
-      - run: npm run style
-      - run: npm run lint
+      - run:
+          name: Check for Code Style and Linting Issues
+          command: |
+            npm run style
+            npm run lint
 
-      - run: npm test
-
+      - run:
+          name: Run Tests and Check Code Coverage
+          command: npm run test:ci
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./test_results/
       - store_test_results:
           path: ./test_results
-
-      # run code coverage and store coverage report
-      - run: npm run test:nyc
       - store_artifacts:
           path: ./coverage
 

@@ -17,20 +17,25 @@ export function createComponentMock(
     selectorName = inferSelectorName(className)
   }
 
-  const newClass: any = (getWindow()[className] = () => {})
-  return __decorate([Component({ selector: selectorName, template })], newClass)
+  const newClass = (getWindow()[className] = () => {})
+  return __decorate(
+    [Component({ selector: selectorName, template })],
+    newClass
+  ) as Component
 }
 
-function getWindow(): any {
+function getWindow(): { [key: string]: unknown } {
   if (typeof window === 'undefined') {
     return {}
   }
-  /* istanbul ignore next */
+
+  // @ts-expect-error - Returns window from browser
   return window
 }
 
-function inferSelectorName(className: string) {
+function inferSelectorName(className: string): string {
   className = className.replace('Component', '')
-  className = camelToKebabCase(className)
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  className = camelToKebabCase(className) as string
   return `app-${className}`
 }

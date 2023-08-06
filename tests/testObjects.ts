@@ -41,8 +41,4 @@ export class WeatherService extends AbstractWeatherService {
   get color() {
     return 'red'
   }
-
-  constructor(a: string, b: string) {
-    super(a, b)
-  }
 }

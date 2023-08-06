@@ -1,45 +1,41 @@
 {
-    "editor.tabSize": 2,
-    "editor.rulers": [
-        90
-    ],
-    "files.trimTrailingWhitespace": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.DS_Store": true,
-        "**/*.js": {
-            "when": "$(basename).ts"
-        },
-        "**/*.js.map": {
-            "when": "$(basename)"
-        }
+  "editor.tabSize": 2,
+  "editor.rulers": [90],
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
     },
-    "debug.openExplorerOnEnd": true,
-    "editor.autoIndent": "full",
-    "editor.cursorBlinking": "solid",
-    "editor.formatOnType": false,
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true,
-    "editor.minimap.enabled": false,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": false,
-        "source.fixAll.tslint": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[html]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "explorer.openEditors.visible": 0,
-    "files.autoSave": "onFocusChange",
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "npm.enableScriptExplorer": true,
-    "typescript.tsdk": "node_modules/typescript/lib",
-    "workbench.iconTheme": "material-icon-theme",
-    "auto-close-tag.SublimeText3Mode": true,
-    "html.autoClosingTags": false,
-    "gitlens.menus": {
-        "editorGroup": false
-    },
-    "angular.enable-strict-mode-prompt": false
+    "**/*.js.map": {
+      "when": "$(basename)"
+    }
+  },
+  "debug.openExplorerOnEnd": true,
+  "editor.autoIndent": "full",
+  "editor.cursorBlinking": "solid",
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false,
+    "source.fixAll.tslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "explorer.openEditors.visible": 0,
+  "files.autoSave": "onFocusChange",
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.iconTheme": "material-icon-theme",
+  "auto-close-tag.SublimeText3Mode": true,
+  "html.autoClosingTags": false,
+  "gitlens.menus": {
+    "editorGroup": false
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }

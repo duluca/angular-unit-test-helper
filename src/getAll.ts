@@ -1,13 +1,23 @@
-export function getAllFunctions(prototype: any, props?: (string | number | symbol)[]) {
-  if (!props) {
-    props = Reflect.ownKeys(prototype)
-  }
-  return props.filter((e) => typeof prototype[e] === 'function')
+interface IObjectPrototype {
+  [key: string | number | symbol]: unknown
 }
 
-export function getAllProperties(prototype: any, props?: (string | number | symbol)[]) {
+export function getAllFunctions(
+  prototype: unknown,
+  props?: (string | number | symbol)[]
+) {
   if (!props) {
-    props = Reflect.ownKeys(prototype)
+    props = Reflect.ownKeys(prototype as object)
   }
-  return props.filter((e) => typeof prototype[e] !== 'function')
+  return props.filter((e) => typeof (prototype as IObjectPrototype)[e] === 'function')
+}
+
+export function getAllProperties(
+  prototype: unknown,
+  props?: (string | number | symbol)[]
+) {
+  if (!props) {
+    props = Reflect.ownKeys(prototype as object)
+  }
+  return props.filter((e) => typeof (prototype as IObjectPrototype)[e] !== 'function')
 }

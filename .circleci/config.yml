@@ -82,12 +82,10 @@ jobs:
       - run:
           name: Publish package
           command: npm publish $(echo /tmp/workspace/pkg/*.tgz)
-
 workflows:
-  build-and-test:
+  build-and-deploy:
     jobs:
-      - build:
-          context: all
+      - build
       - hold:
           type: approval
           requires:
@@ -96,5 +94,6 @@ workflows:
             branches:
               only: main
       - deploy:
+          context: npm
           requires:
             - hold

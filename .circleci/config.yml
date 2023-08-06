@@ -96,5 +96,6 @@ workflows:
             branches:
               only: main
       - deploy:
+          context: npm
           requires:
             - hold

@@ -2,7 +2,7 @@
 
 > Helper functions to help write unit tests in Angular using mocks and spies
 
-![Angular Version](https://img.shields.io/badge/angular-v12-326839)
+![Angular Version](https://img.shields.io/badge/angular-v13-326839)
 [![CircleCI](https://circleci.com/gh/duluca/angular-unit-test-helper.svg?style=svg)](https://circleci.com/gh/duluca/angular-unit-test-helper)
 [![Coverage Status](https://coveralls.io/repos/github/duluca/angular-unit-test-helper/badge.svg?branch=main)](https://coveralls.io/github/duluca/angular-unit-test-helper?branch=main)
 

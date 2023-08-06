@@ -20,7 +20,7 @@
     "build:test": "tsc -p tests/tsconfig.spec.json",
     "prepublishOnly": "npm run test",
     "prepare": "npm run build",
-    "test:ci": "ts-node ./node_modules/jasmine-xml-reporter/bin/jasmine.js --config=./jasmine.json --junitreport --output=test_results/",
+    "test:ci": "tsx ./node_modules/jasmine-xml-reporter/bin/jasmine.js --config=./jasmine.json --junitreport --output=test_results/",
     "test:nyc": "nyc node_modules/ts-node/dist/bin.js node_modules/jasmine/bin/jasmine --config=./jasmine.json --cache=false",
     "init:env": "init-dev-env generate-dot-env example.env -f"
   },

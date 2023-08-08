@@ -1,6 +1,6 @@
 {
   "name": "angular-unit-test-helper",
-  "version": "13.0.2",
+  "version": "13.0.3",
   "description": "Helper functions to help write unit tests in Angular using mocks and spies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -70,8 +70,5 @@
     "jasmine": ">= 3 <= 5",
     "rxjs": "^7",
     "typescript": "^4"
-  },
-  "dependencies": {
-    "camel-to-kebab": "^1.1.2"
   }
 }

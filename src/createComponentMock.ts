@@ -18,7 +18,10 @@ export function createComponentMock(
   }
 
   const newClass: any = (getWindow()[className] = () => {})
-  const decoratedObject = __decorate([Component({ selector: selectorName, template })], newClass)
+  const decoratedObject = __decorate(
+    [Component({ selector: selectorName, template })],
+    newClass
+  )
 
   if (!decoratedObject.prototype) {
     decoratedObject.prototype = {}

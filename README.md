@@ -26,6 +26,7 @@ npm i -D angular-unit-test-helper
 ## Example Projects
 
 Check out my sample projects that leverage `angular-unit-test-helper`:
+
 - https://github.com/duluca/local-weather-app
 - https://github.com/duluca/lemon-mart
 
@@ -105,7 +106,24 @@ Usage
   weatherServiceMock.currentWeather$.next(fakeWeather)
 ```
 
-### `createComponentMock(className: string, selectorName?: string, template = '')`
+### _deprecated_ `createComponentMock(className: string, selectorName?: string, template = '')`
+
+_Deprecated_ Use `ng-mocks` instead. https://ng-mocks.sudo.eu/api/MockComponent.
+
+1. Install using `install i -D ng-mocks`
+2. Refactor `createComponentMock` function calls to look like the sample below:
+
+```TypeScript
+TestBed.configureTestingModule({
+  declarations: [
+    // for a single component
+    MockComponent(Component),
+
+    // for a set of components
+    ...MockComponents(Component1, Component2),
+  ],
+})
+```
 
 Creates a mock class decorated with @Component, if not specified selector is inferred to be MyClassComponent -> app. Provides an option to override empty template.
 

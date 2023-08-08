@@ -1,44 +1,13 @@
-import { Component } from '@angular/core'
-import camelToKebabCase from 'camel-to-kebab'
-import { __decorate } from 'tslib'
-
 export function createComponentMock(
   className: string,
   selectorName?: string,
   template = ''
 ) {
-  if (!className || !className.endsWith('Component')) {
-    throw new Error(
-      'Expected class name to end with Component, but it did not. Provide a valid component class name.'
-    )
-  }
-
-  if (!selectorName) {
-    selectorName = inferSelectorName(className)
-  }
-
-  const newClass: any = (getWindow()[className] = () => {})
-  const decoratedObject = __decorate(
-    [Component({ selector: selectorName, template })],
-    newClass
+  className.padStart(0)
+  selectorName?.padStart(0)
+  template.padStart(0)
+  console.error(
+    'createComponentMock has been removed. Use ng-mocks instead. See README.md for more information.'
   )
-
-  if (!decoratedObject.prototype) {
-    decoratedObject.prototype = {}
-  }
-  return decoratedObject
-}
-
-function getWindow(): any {
-  if (typeof window === 'undefined') {
-    return {}
-  }
-  /* istanbul ignore next */
-  return window
-}
-
-function inferSelectorName(className: string) {
-  className = className.replace('Component', '')
-  className = camelToKebabCase(className)
-  return `app-${className}`
+  throw new Error('createComponentMock has been removed.')
 }

@@ -24,14 +24,10 @@
     "source.fixAll.tslint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[html]": {
-    "editor.defaultFormatter": "HookyQR.beautify"
-  },
   "explorer.openEditors.visible": 0,
   "files.autoSave": "onFocusChange",
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
-  "npm.enableScriptExplorer": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.iconTheme": "material-icon-theme",
   "auto-close-tag.SublimeText3Mode": true,
@@ -39,7 +35,6 @@
   "gitlens.menus": {
     "editorGroup": false
   },
-  "angular.enable-strict-mode-prompt": false,
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   }

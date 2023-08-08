@@ -12,10 +12,24 @@ let window = {} as any
 
 describe('createComponentMock', () => {
   it('should create a mocked component', () => {
+    const expectedProperties = [
+      'length',
+      'name',
+      'prototype',
+      'ɵfac',
+      'ɵcmp',
+      '__annotations__',
+    ]
+
     window = {}
     window.hello = 'world'
     const cc = createComponentMock('CurrentWeatherComponent', undefined, '')
+
     expect(cc).toBeDefined()
+
+    expectedProperties.forEach((prop) => {
+      expect(Object.getOwnPropertyNames(cc)).toContain(prop)
+    })
   })
 
   // it('should create a mocked component with undefined window', () => {

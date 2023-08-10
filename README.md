@@ -2,12 +2,17 @@
 
 > Helper functions to help write unit tests in Angular using mocks and spies
 
-![Angular Version](https://img.shields.io/badge/angular-v13-326839)
+![Angular Version](https://img.shields.io/badge/angular-v16-326839)
 [![CircleCI](https://circleci.com/gh/duluca/angular-unit-test-helper.svg?style=svg)](https://circleci.com/gh/duluca/angular-unit-test-helper)
 [![Coverage Status](https://coveralls.io/repos/github/duluca/angular-unit-test-helper/badge.svg?branch=main)](https://coveralls.io/github/duluca/angular-unit-test-helper?branch=main)
 
 [![npm](https://img.shields.io/npm/v/angular-unit-test-helper)](https://www.npmjs.com/package/angular-unit-test-helper)
 [![npm](https://img.shields.io/npm/dt/angular-unit-test-helper)](https://www.npmjs.com/package/angular-unit-test-helper)
+
+## Breaking Changes
+
+- `createComponentMock` has been removed, in favor of `ng-mocks`. See below for more info.
+- `jasmine` is deprecated. As of v16.5 the tool will switch to `jest`.
 
 ## Goal
 

@@ -11,8 +11,15 @@
 
 ## Breaking Changes
 
-- `createComponentMock` has been removed, in favor of `ng-mocks`. See below for more info.
-- `jasmine` is deprecated. As of v16.5 the tool will switch to `jest`.
+- `createComponentMock` has been removed in favor of `ng-mocks`. See below for more info.
+- `jasmine` has been removed in favor of `jest`.
+
+### Jest Migration
+
+- See this transition guide: https://engineering.leanix.net/blog/replace-jasmine-with-jest/#search-and-replacements-examples
+- Import `createSpyObj` from `angular-unit-test-helper` (pass through from `jest-createspyobj`)
+- Rename `jasmine.SpyObj` to `jest.Mock` or `jest.Mocked<T>`. Note that in the latter case, you'll need to provide class type.
+- Replace `and.returnValue` with `mockReturnValue`
 
 ## Goal
 

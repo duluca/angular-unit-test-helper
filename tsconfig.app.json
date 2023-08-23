@@ -13,9 +13,13 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "target": "es2022",
+    "esModuleInterop": true,
+    "lib": ["dom", "es2022"],
     "allowSyntheticDefaultImports": true
+    // "allowJs": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

@@ -1,16 +1,13 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "importHelpers": true,
     "typeRoots": ["node_modules/@types"],
-    "target": "es2017",
-    "module": "es2020",
     "strict": true,
+    "types": ["jest", "node"],
+    "experimentalDecorators": true,
     "esModuleInterop": true,
-    "lib": ["dom", "es2020"],
-    "types": ["jasmine", "node"],
-    "experimentalDecorators": true
+    "allowJs": true
   }
 }

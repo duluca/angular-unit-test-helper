@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "strict": false,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "types": ["node", "jest"],
+    "module": "es2022",
+    "moduleResolution": "node",
+    "target": "es2022",
+    "esModuleInterop": true,
+    "lib": ["dom", "es2022"],
+    "allowSyntheticDefaultImports": true
+    // "allowJs": true
+  },
+  "include": ["tests"]
+}

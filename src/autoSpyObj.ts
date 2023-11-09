@@ -12,12 +12,13 @@ export enum ObservablePropertyStrategy {
 export function autoSpyObj<TClassUnderTest>(
   classUnderTest: NewableFunction,
   spyProperties = [] as string[],
-  observableStrategy = ObservablePropertyStrategy.Observable
+  observableStrategy = ObservablePropertyStrategy.Observable,
+  spyFunctions = [] as string[]
 ): jasmine.SpyObj<TClassUnderTest> {
   const props = Reflect.ownKeys(classUnderTest.prototype)
   const spyObj: jasmine.SpyObj<TClassUnderTest> = jasmine.createSpyObj(
     classUnderTest.name,
-    getAllFunctions(classUnderTest.prototype, props)
+    getAllFunctions(classUnderTest.prototype, props).concat(spyFunctions)
   )
 
   const properties = getAllProperties(classUnderTest.prototype, props).concat(

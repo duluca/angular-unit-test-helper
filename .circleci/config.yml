@@ -96,6 +96,7 @@ jobs:
       - run:
           name: Publish package
           command: |
+            npm i -g semver
             npm run release:beta
             npm publish --tag beta $(echo /tmp/workspace/pkg/*.tgz)
 workflows:

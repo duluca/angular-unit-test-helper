@@ -1,6 +1,6 @@
 {
   "name": "angular-unit-test-helper",
-  "version": "17.0.0",
+  "version": "17.0.2",
   "description": "Helper functions to help write unit tests in Angular using mocks and spies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,8 @@
     "prepublishOnly": "npm run test",
     "prepare": "npm run build",
     "test:ci": "npm test",
-    "init:env": "init-dev-env generate-dot-env example.env -f"
+    "init:env": "init-dev-env generate-dot-env example.env -f",
+    "release:beta": "npm version $(semver $npm_package_version -i prerelease --preid beta)"
   },
   "repository": {
     "type": "git",

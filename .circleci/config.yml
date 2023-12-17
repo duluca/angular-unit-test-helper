@@ -95,7 +95,9 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
-          command: npm publish --tag beta $(echo /tmp/workspace/pkg/*.tgz)
+          command: |
+            npm run release:beta
+            npm publish --tag beta $(echo /tmp/workspace/pkg/*.tgz)
 workflows:
   build-and-deploy:
     jobs:
@@ -115,3 +117,6 @@ workflows:
           context: npm
           requires:
             - build
+          filters:
+            branches:
+              ignore: main

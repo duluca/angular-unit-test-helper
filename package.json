@@ -63,10 +63,5 @@
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "zone.js": "^0.13.1"
-  },
-  "peerDependencies": {
-    "@angular/compiler": "^16",
-    "@angular/core": "^16",
-    "jasmine": ">= 4 <= 5"
   }
 }

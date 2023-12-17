@@ -82,6 +82,20 @@ jobs:
       - run:
           name: Publish package
           command: npm publish $(echo /tmp/workspace/pkg/*.tgz)
+  deploy-beta:
+    docker:
+      - image: cimg/node:lts
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish --tag beta $(echo /tmp/workspace/pkg/*.tgz)
 workflows:
   build-and-deploy:
     jobs:
@@ -97,3 +111,7 @@ workflows:
           context: npm
           requires:
             - hold
+      - deploy-beta:
+          context: npm
+          requires:
+            - build

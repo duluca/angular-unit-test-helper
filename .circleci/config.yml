@@ -114,6 +114,7 @@ workflows:
             - hold
       - deploy-beta:
           context: npm
+          type: approval
           requires:
             - build
           filters:

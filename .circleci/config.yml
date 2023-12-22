@@ -1,5 +1,6 @@
 version: 2.1
-# orbs:
+orbs:
+  browser-tools: circleci/browser-tools@1
 #   coveralls: coveralls/coveralls@2.2.1
 jobs:
   build:
@@ -39,17 +40,6 @@ jobs:
       - run:
           name: Run Tests and Check Code Coverage
           command: npm run test:ci
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./test_results/
-      - store_test_results:
-          path: ./test_results
-      - store_artifacts:
-          path: ./coverage
-
-      # upload coverage report to coveralls for readme badge support
-      # requires config.yml version 2.1 and orbs: coveralls: coveralls/coveralls@1.0.4
-      # requires coveralls account and token specific to repo to be stored in CircleCI
-      # - coveralls/upload
 
       - run: npm run build
       - run: npm pack
@@ -68,6 +58,32 @@ jobs:
           root: /tmp/workspace
           paths:
             - pkg
+  test-with-project:
+    docker:
+      - image: cimg/node:lts-browsers
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
+      - run:
+          name: Test lemon-mart
+          command: |
+            git clone https://github.com/duluca/lemon-mart
+            cd lemon-mart
+            npm ci
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          name: Apply angular-unit-test-helper
+          command: |
+            set -exu
+            cd lemon-mart
+            npm install /tmp/workspace/pkg/angular-unit-test-helper.tgz
+      - run:
+          name: Run lemon-mart tests
+          command: |
+            npx ng test --watch=false --project lemon-mart
   deploy:
     docker:
       - image: cimg/node:lts

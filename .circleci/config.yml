@@ -61,7 +61,7 @@ jobs:
   test-with-project:
     docker:
       - image: cimg/node:lts-browsers
-    working_directory: ~/repo
+    working_directory: ~/
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -79,7 +79,7 @@ jobs:
           command: |
             set -exu
             cd lemon-mart
-            npm install /tmp/workspace/pkg/angular-unit-test-helper.tgz
+            npm install /tmp/workspace/pkg/angular-unit-test-helper-*.tgz
       - run:
           name: Run lemon-mart tests
           command: |

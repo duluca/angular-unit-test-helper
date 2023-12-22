@@ -2,6 +2,37 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1
 #   coveralls: coveralls/coveralls@2.2.1
+commands:
+  test-with-project:
+    description: |
+      Run tests with a project that uses the package.
+    parameters:
+      project:
+        type: string
+      github-url:
+        type: string
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Setup << parameters.project >>
+          command: |
+            git clone << parameters.github-url >>
+            cd << parameters.project >>
+            npm ci
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          name: Apply angular-unit-test-helper
+          command: |
+            set -exu
+            cd << parameters.project >>
+            npm install /tmp/workspace/pkg/angular-unit-test-helper-*.tgz
+      - run:
+          name: Run << parameters.project >> tests
+          command: |
+            cd << parameters.project >>
+            npx ng test --watch=false --project << parameters.project >>
 jobs:
   build:
     docker:
@@ -58,32 +89,6 @@ jobs:
           root: /tmp/workspace
           paths:
             - pkg
-  test-with-project:
-    docker:
-      - image: cimg/node:lts-browsers
-    working_directory: ~/
-    steps:
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Setup lemon-mart
-          command: |
-            git clone https://github.com/duluca/lemon-mart
-            cd lemon-mart
-            npm ci
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
-      - run:
-          name: Apply angular-unit-test-helper
-          command: |
-            set -exu
-            cd lemon-mart
-            npm install /tmp/workspace/pkg/angular-unit-test-helper-*.tgz
-      - run:
-          name: Run lemon-mart tests
-          command: |
-            cd lemon-mart
-            npx ng test --watch=false --project lemon-mart
   deploy:
     docker:
       - image: cimg/node:lts
@@ -98,26 +103,33 @@ jobs:
       - run:
           name: Publish package
           command: npm publish $(echo /tmp/workspace/pkg/*.tgz)
-  deploy-beta:
+  test-lemon-mart:
     docker:
-      - image: cimg/node:lts
-    working_directory: ~/repo
+      - image: cimg/node:lts-browsers
+    working_directory: ~/
     steps:
-      - attach_workspace:
-          at: /tmp/workspace
-      - checkout
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: Publish package
-          command: |
-            npm publish --tag beta $(echo /tmp/workspace/pkg/*.tgz)
+      - test-with-project:
+          project: lemon-mart
+          github-url: https://github.com/duluca/lemon-mart
+  test-local-weather-app:
+    docker:
+      - image: cimg/node:lts-browsers
+    working_directory: ~/
+    steps:
+      - test-with-project:
+          project: local-weather-app
+          github-url: https://github.com/duluca/local-weather-app
 workflows:
   build-and-deploy:
     jobs:
       - build
-      - test-with-project:
+      - test-lemon-mart:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: main
+      - test-local-weather-app:
           requires:
             - build
           filters:
@@ -134,14 +146,3 @@ workflows:
           context: npm
           requires:
             - hold
-      # - hold-beta:
-      #     type: approval
-      #     requires:
-      #       - build
-      #     filters:
-      #       branches:
-      #         ignore: main
-      # - deploy-beta:
-      #     context: npm
-      #     requires:
-      #       - hold-beta

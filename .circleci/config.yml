@@ -67,7 +67,7 @@ jobs:
           at: /tmp/workspace
       - checkout
       - run:
-          name: Test lemon-mart
+          name: Setup lemon-mart
           command: |
             git clone https://github.com/duluca/lemon-mart
             cd lemon-mart

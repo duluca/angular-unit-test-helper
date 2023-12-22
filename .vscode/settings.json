@@ -20,8 +20,8 @@
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": false,
-    "source.fixAll.tslint": true
+    "source.organizeImports": "never",
+    "source.fixAll.tslint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "explorer.openEditors.visible": 0,
@@ -37,5 +37,6 @@
   },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
-  }
+  },
+  "angular.enable-strict-mode-prompt": false
 }

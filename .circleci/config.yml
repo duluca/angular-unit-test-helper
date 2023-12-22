@@ -82,6 +82,7 @@ jobs:
       - run:
           name: Run lemon-mart tests
           command: |
+            cd lemon-mart
             npx ng test --watch=false --project lemon-mart
   deploy:
     docker:

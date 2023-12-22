@@ -117,6 +117,12 @@ workflows:
   build-and-deploy:
     jobs:
       - build
+      - test-with-project:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: main
       - hold:
           type: approval
           requires:

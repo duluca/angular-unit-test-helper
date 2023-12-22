@@ -65,7 +65,6 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/workspace
-      - checkout
       - run:
           name: Setup lemon-mart
           command: |

@@ -1,6 +1,6 @@
 version: 2.1
-orbs:
-  coveralls: coveralls/coveralls@2.2.1
+# orbs:
+#   coveralls: coveralls/coveralls@2.2.1
 jobs:
   build:
     docker:
@@ -49,7 +49,7 @@ jobs:
       # upload coverage report to coveralls for readme badge support
       # requires config.yml version 2.1 and orbs: coveralls: coveralls/coveralls@1.0.4
       # requires coveralls account and token specific to repo to be stored in CircleCI
-      - coveralls/upload
+      # - coveralls/upload
 
       - run: npm run build
       - run: npm pack

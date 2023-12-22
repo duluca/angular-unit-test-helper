@@ -112,14 +112,14 @@ workflows:
           context: npm
           requires:
             - hold
-      - hold-beta:
-          type: approval
-          requires:
-            - build
-          filters:
-            branches:
-              ignore: main
-      - deploy-beta:
-          context: npm
-          requires:
-            - hold-beta
+      # - hold-beta:
+      #     type: approval
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         ignore: main
+      # - deploy-beta:
+      #     context: npm
+      #     requires:
+      #       - hold-beta

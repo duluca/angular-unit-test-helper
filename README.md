@@ -152,6 +152,25 @@ Replaces boilerplate
 class MockCurrentWeatherComponent {}
 ```
 
+### `getNativeElementByTestId<TComponent>(fixture: ComponentFixture<TComponent>, testId: string = '')`
+
+Helper function to retrieve the native element associated with a specific `data-testid`` within a component fixture.
+
+Usage
+
+```html
+<span class="left-pad" data-testid="title">LemonMart</span>
+```
+
+```ts
+it('should render title', () => {
+  const fixture = TestBed.createComponent(AppComponent)
+  fixture.detectChanges()
+  const titleElement = getNativeElementByTestId(fixture, 'title')
+  expect(titleElement.textContent).toContain('LemonMart')
+})
+```
+
 ### `injectClass<TDependency>(dependency: Type<TDependency> | AbstractType<TDependency>): TDependency`
 
 Helper function to inject a dependency, like a service, into the TestBed with a typed return variable.
